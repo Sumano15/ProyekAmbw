@@ -282,7 +282,28 @@ class _SignInScreenState extends State<SignInScreen> {
                             password: PasswordController.text.toString(),
                             role: "user");
                         DataAkun.addData(data: dt);
-                        Navigator.pop(context);
+                        showDialog(
+                          context: context,
+                          builder: (BuildContext context) {
+                            return AlertDialog(
+                              title: Text("Success"),
+                              content: Text("Akun Berhasil Di Daftarkan"),
+                              actions: <Widget>[
+                                ElevatedButton(
+                                  child: Text("Kembali ke Login"),
+                                  onPressed: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => LogInScreen(),
+                                      ),
+                                    );
+                                  },
+                                )
+                              ],
+                            );
+                          },
+                        );
                       }
                     },
                     child: Text(

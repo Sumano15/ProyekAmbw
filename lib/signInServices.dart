@@ -14,7 +14,9 @@ class DataAkun {
 
     await docRef
         .set(data.toJson())
-        .whenComplete(() => print("Data berhasil ditambahkan"))
-        .catchError((e) => print("Data Gagal:" + e));
+        .whenComplete(
+          () => print("Data berhasil ditambahkan"),
+        )
+        .catchError((e) => print(e.toString()));
   }
 }
