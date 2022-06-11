@@ -1,4 +1,6 @@
+import 'package:ambwproyek/dataclass.dart';
 import 'package:ambwproyek/login.dart';
+import 'package:ambwproyek/signInServices.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -18,6 +20,28 @@ class _SignInScreenState extends State<SignInScreen> {
   final EmailController = TextEditingController();
   final PasswordController = TextEditingController();
   final ConfirmPasswordController = TextEditingController();
+
+  @override
+  void dispose() {
+    NamaController.dispose();
+    NoTelpController.dispose();
+    EmailController.dispose();
+    PasswordController.dispose();
+    ConfirmPasswordController.dispose();
+    super.dispose();
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    NamaController.text = "";
+    NoTelpController.text = "";
+    EmailController.text = "";
+    PasswordController.text = "";
+    ConfirmPasswordController.text = "";
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -139,7 +163,128 @@ class _SignInScreenState extends State<SignInScreen> {
                         borderRadius: BorderRadius.circular(25),
                       ),
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      if (NamaController.text.isEmpty) {
+                        showDialog(
+                          context: context,
+                          builder: (BuildContext context) {
+                            return AlertDialog(
+                              title: Text("Error"),
+                              content: Text("Nama tidak boleh kosong"),
+                              actions: <Widget>[
+                                ElevatedButton(
+                                  child: Text("OK"),
+                                  onPressed: () {
+                                    Navigator.of(context).pop();
+                                  },
+                                )
+                              ],
+                            );
+                          },
+                        );
+                      } else if (NoTelpController.text.isEmpty) {
+                        showDialog(
+                          context: context,
+                          builder: (BuildContext context) {
+                            return AlertDialog(
+                              title: Text("Error"),
+                              content: Text("No Telp tidak boleh kosong"),
+                              actions: <Widget>[
+                                ElevatedButton(
+                                  child: Text("OK"),
+                                  onPressed: () {
+                                    Navigator.of(context).pop();
+                                  },
+                                )
+                              ],
+                            );
+                          },
+                        );
+                      } else if (EmailController.text.isEmpty) {
+                        showDialog(
+                          context: context,
+                          builder: (BuildContext context) {
+                            return AlertDialog(
+                              title: Text("Error"),
+                              content: Text("Email tidak boleh kosong"),
+                              actions: <Widget>[
+                                ElevatedButton(
+                                  child: Text("OK"),
+                                  onPressed: () {
+                                    Navigator.of(context).pop();
+                                  },
+                                )
+                              ],
+                            );
+                          },
+                        );
+                      } else if (PasswordController.text.isEmpty) {
+                        showDialog(
+                          context: context,
+                          builder: (BuildContext context) {
+                            return AlertDialog(
+                              title: Text("Error"),
+                              content: Text("Password tidak boleh kosong"),
+                              actions: <Widget>[
+                                ElevatedButton(
+                                  child: Text("OK"),
+                                  onPressed: () {
+                                    Navigator.of(context).pop();
+                                  },
+                                )
+                              ],
+                            );
+                          },
+                        );
+                      } else if (ConfirmPasswordController.text.isEmpty) {
+                        showDialog(
+                          context: context,
+                          builder: (BuildContext context) {
+                            return AlertDialog(
+                              title: Text("Error"),
+                              content:
+                                  Text("Confirm Password tidak boleh kosong"),
+                              actions: <Widget>[
+                                ElevatedButton(
+                                  child: Text("OK"),
+                                  onPressed: () {
+                                    Navigator.of(context).pop();
+                                  },
+                                )
+                              ],
+                            );
+                          },
+                        );
+                      } else if (PasswordController.text !=
+                          ConfirmPasswordController.text) {
+                        showDialog(
+                          context: context,
+                          builder: (BuildContext context) {
+                            return AlertDialog(
+                              title: Text("Error"),
+                              content: Text("Password tidak sama"),
+                              actions: <Widget>[
+                                ElevatedButton(
+                                  child: Text("OK"),
+                                  onPressed: () {
+                                    Navigator.of(context).pop();
+                                  },
+                                )
+                              ],
+                            );
+                          },
+                        );
+                      } else {
+                        final dt = akun(
+                            nama: NamaController.text.toString(),
+                            noTelp: NoTelpController.text.toString(),
+                            email: EmailController.text.toString(),
+                            password: PasswordController.text.toString(),
+                            role: "user");
+                        DataAkun.addData(data: dt);
+                        Navigator.pop(context);
+                      }
+                    },
                     child: Text(
                       'Daftar',
                       style: TextStyle(
