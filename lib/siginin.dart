@@ -7,6 +7,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class SignInScreen extends StatefulWidget {
   const SignInScreen({Key? key}) : super(key: key);
@@ -131,8 +132,20 @@ class _SignInScreenState extends State<SignInScreen> {
                   SizedBox(
                     height: 15,
                   ),
+                  // TextField(
+                  //   controller: NoTelpController,
+                  //   decoration: InputDecoration(
+                  //     border: OutlineInputBorder(),
+                  //     labelText: 'No Telp',
+                  //     prefixIcon: Icon(Icons.phone),
+                  //   ),
+                  // ),
                   TextField(
                     controller: NoTelpController,
+                    keyboardType: TextInputType.number,
+                    inputFormatters: [
+                      FilteringTextInputFormatter.digitsOnly,
+                    ],
                     decoration: InputDecoration(
                       border: OutlineInputBorder(),
                       labelText: 'No Telp',
