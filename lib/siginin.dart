@@ -353,29 +353,45 @@ class _SignInScreenState extends State<SignInScreen> {
                             );
                           },
                         );
-                      }
-                      // } else if (EmailValidator.validate(
-                      //         EmailController.text) !=
-                      //     true) {
-                      //   showDialog(
-                      //     context: context,
-                      //     builder: (BuildContext context) {
-                      //       return AlertDialog(
-                      //         title: Text("Error"),
-                      //         content: Text("Email tidak valid"),
-                      //         actions: <Widget>[
-                      //           ElevatedButton(
-                      //             child: Text("OK"),
-                      //             onPressed: () {
-                      //               Navigator.of(context).pop();
-                      //             },
-                      //           )
-                      //         ],
-                      //       );
-                      //     },
-                      //   );
-                      // }
-                      else {
+                      } else if (EmailValidator.validate(
+                              EmailController.text) !=
+                          true) {
+                        showDialog(
+                          context: context,
+                          builder: (BuildContext context) {
+                            return AlertDialog(
+                              title: Text("Error"),
+                              content: Text("Email tidak valid"),
+                              actions: <Widget>[
+                                ElevatedButton(
+                                  child: Text("OK"),
+                                  onPressed: () {
+                                    Navigator.of(context).pop();
+                                  },
+                                )
+                              ],
+                            );
+                          },
+                        );
+                      } else if (PasswordController.text.length < 6) {
+                        showDialog(
+                          context: context,
+                          builder: (BuildContext context) {
+                            return AlertDialog(
+                              title: Text("Error"),
+                              content: Text("Password minimal 6 karakter"),
+                              actions: <Widget>[
+                                ElevatedButton(
+                                  child: Text("OK"),
+                                  onPressed: () {
+                                    Navigator.of(context).pop();
+                                  },
+                                )
+                              ],
+                            );
+                          },
+                        );
+                      } else {
                         _signUp(
                             EmailController.text.toString(),
                             PasswordController.text.toString(),

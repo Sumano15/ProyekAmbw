@@ -23,6 +23,25 @@ class _LogInScreenState extends State<LogInScreen> {
   final PasswordController = TextEditingController();
   final _auth = FirebaseAuth.instance;
 
+  showLoaderDialog(BuildContext context) {
+    AlertDialog alert = AlertDialog(
+      content: new Row(
+        children: [
+          CircularProgressIndicator(),
+          Container(
+              margin: EdgeInsets.only(left: 7), child: Text("Loading...")),
+        ],
+      ),
+    );
+    showDialog(
+      barrierDismissible: false,
+      context: context,
+      builder: (BuildContext context) {
+        return alert;
+      },
+    );
+  }
+
   void _signIn() async {
     try {
       final user = await _auth.signInWithEmailAndPassword(
@@ -38,6 +57,7 @@ class _LogInScreenState extends State<LogInScreen> {
             context,
             MaterialPageRoute(
               builder: (context) => UserHome(),
+              //resultdata nya di pasing buat catat di transaksi
             ),
           );
         } else if (result.data()!['role'] == 'admin') {
@@ -139,6 +159,7 @@ class _LogInScreenState extends State<LogInScreen> {
                       ),
                     ),
                     onPressed: () {
+                      showLoaderDialog(context);
                       if (EmailController.text.isEmpty) {
                         showDialog(
                           context: context,
