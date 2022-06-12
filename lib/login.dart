@@ -1,4 +1,8 @@
 import 'package:ambwproyek/siginin.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:email_validator/email_validator.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -14,6 +18,25 @@ class _LogInScreenState extends State<LogInScreen> {
   bool _isObscure = true;
   final EmailController = TextEditingController();
   final PasswordController = TextEditingController();
+  final _auth = FirebaseAuth.instance;
+
+  void _signIn() async {
+    try {
+      final user = await _auth.signInWithEmailAndPassword(
+          email: EmailController.text, password: PasswordController.text);
+      final res = _auth.currentUser;
+      String? uid = res?.uid;
+
+      if (user != null) {
+        print('User Signed in');
+      } else {
+        print("User not Signed in");
+      }
+    } catch (e) {
+      print(e.toString());
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -89,7 +112,67 @@ class _LogInScreenState extends State<LogInScreen> {
                         borderRadius: BorderRadius.circular(25),
                       ),
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      if (EmailController.text.isEmpty) {
+                        showDialog(
+                          context: context,
+                          builder: (BuildContext context) {
+                            return AlertDialog(
+                              title: Text("Error"),
+                              content: Text("Email tidak boleh kosong"),
+                              actions: <Widget>[
+                                ElevatedButton(
+                                  child: Text("OK"),
+                                  onPressed: () {
+                                    Navigator.of(context).pop();
+                                  },
+                                )
+                              ],
+                            );
+                          },
+                        );
+                      } else if (EmailValidator.validate(
+                              EmailController.text) !=
+                          true) {
+                        showDialog(
+                          context: context,
+                          builder: (BuildContext context) {
+                            return AlertDialog(
+                              title: Text("Error"),
+                              content: Text("Email tidak valid"),
+                              actions: <Widget>[
+                                ElevatedButton(
+                                  child: Text("OK"),
+                                  onPressed: () {
+                                    Navigator.of(context).pop();
+                                  },
+                                )
+                              ],
+                            );
+                          },
+                        );
+                      } else if (PasswordController.text.isEmpty) {
+                        showDialog(
+                          context: context,
+                          builder: (BuildContext context) {
+                            return AlertDialog(
+                              title: Text("Error"),
+                              content: Text("Password tidak boleh kosong"),
+                              actions: <Widget>[
+                                ElevatedButton(
+                                  child: Text("OK"),
+                                  onPressed: () {
+                                    Navigator.of(context).pop();
+                                  },
+                                )
+                              ],
+                            );
+                          },
+                        );
+                      } else {
+                        _signIn();
+                      }
+                    },
                     child: Text(
                       'Masuk',
                       style: TextStyle(

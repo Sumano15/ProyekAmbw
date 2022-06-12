@@ -1,6 +1,9 @@
 import 'package:ambwproyek/dataclass.dart';
 import 'package:ambwproyek/login.dart';
 import 'package:ambwproyek/signInServices.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:email_validator/email_validator.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -20,6 +23,49 @@ class _SignInScreenState extends State<SignInScreen> {
   final EmailController = TextEditingController();
   final PasswordController = TextEditingController();
   final ConfirmPasswordController = TextEditingController();
+  final _auth = FirebaseAuth.instance;
+  // final auth = FirebaseAuth.instance;
+
+  bool isNumericUsingRegularExpression(String string) {
+    final numericRegex = RegExp(r'^-?(([0-9]*)|(([0-9]*)\.([0-9]*)))$');
+
+    return numericRegex.hasMatch(string);
+  }
+
+  void _signUp(
+      String _email, String _password, String _nama, String _noTelp) async {
+    try {
+      final user = await _auth
+          .createUserWithEmailAndPassword(
+            email: _email,
+            password: _password,
+          )
+          .then((value) => toFirestore(_nama, _noTelp, _email, _password))
+          .catchError((e) {});
+
+      if (user != null) {
+        print("User Signed up");
+      } else {
+        print("User not Signed up");
+      }
+    } catch (e) {
+      print(e.toString());
+    }
+  }
+
+  toFirestore(
+      String _nama, String _noTelp, String _email, String _password) async {
+    DataAkun dataAkun = DataAkun();
+    User? user = _auth.currentUser;
+    String? uid = user?.uid;
+    final dt = akun(
+        nama: _nama,
+        noTelp: _noTelp,
+        email: _email,
+        password: _password,
+        role: "user");
+    DataAkun.addData(data: dt, id: uid!);
+  }
 
   @override
   void dispose() {
@@ -200,6 +246,26 @@ class _SignInScreenState extends State<SignInScreen> {
                             );
                           },
                         );
+                      } else if (isNumericUsingRegularExpression(
+                              NoTelpController.text) !=
+                          true) {
+                        showDialog(
+                          context: context,
+                          builder: (BuildContext context) {
+                            return AlertDialog(
+                              title: Text("Error"),
+                              content: Text("No Telp harus angka"),
+                              actions: <Widget>[
+                                ElevatedButton(
+                                  child: Text("OK"),
+                                  onPressed: () {
+                                    Navigator.of(context).pop();
+                                  },
+                                )
+                              ],
+                            );
+                          },
+                        );
                       } else if (EmailController.text.isEmpty) {
                         showDialog(
                           context: context,
@@ -274,14 +340,35 @@ class _SignInScreenState extends State<SignInScreen> {
                             );
                           },
                         );
-                      } else {
-                        final dt = akun(
-                            nama: NamaController.text.toString(),
-                            noTelp: NoTelpController.text.toString(),
-                            email: EmailController.text.toString(),
-                            password: PasswordController.text.toString(),
-                            role: "user");
-                        DataAkun.addData(data: dt);
+                      }
+                      // } else if (EmailValidator.validate(
+                      //         EmailController.text) !=
+                      //     true) {
+                      //   showDialog(
+                      //     context: context,
+                      //     builder: (BuildContext context) {
+                      //       return AlertDialog(
+                      //         title: Text("Error"),
+                      //         content: Text("Email tidak valid"),
+                      //         actions: <Widget>[
+                      //           ElevatedButton(
+                      //             child: Text("OK"),
+                      //             onPressed: () {
+                      //               Navigator.of(context).pop();
+                      //             },
+                      //           )
+                      //         ],
+                      //       );
+                      //     },
+                      //   );
+                      // }
+                      else {
+                        _signUp(
+                            EmailController.text.toString(),
+                            PasswordController.text.toString(),
+                            NamaController.text.toString(),
+                            NoTelpController.text.toString());
+                        // _signIn();
                         showDialog(
                           context: context,
                           builder: (BuildContext context) {

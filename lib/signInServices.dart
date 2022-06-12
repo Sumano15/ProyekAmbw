@@ -9,8 +9,8 @@ class DataAkun {
     return akunRef.snapshots();
   }
 
-  static Future<void> addData({required akun data}) async {
-    DocumentReference docRef = akunRef.doc();
+  static Future<void> addData({required akun data, required String id}) async {
+    DocumentReference docRef = akunRef.doc(id);
 
     await docRef
         .set(data.toJson())
