@@ -1,4 +1,7 @@
+import 'package:ambwproyek/admin/home.dart';
+import 'package:ambwproyek/dapur/home.dart';
 import 'package:ambwproyek/siginin.dart';
+import 'package:ambwproyek/user/home.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -26,9 +29,32 @@ class _LogInScreenState extends State<LogInScreen> {
           email: EmailController.text, password: PasswordController.text);
       final res = _auth.currentUser;
       String? uid = res?.uid;
+      final result =
+          await FirebaseFirestore.instance.collection('akun').doc(uid).get();
 
       if (user != null) {
-        print('User Signed in');
+        if (result.data()!['role'] == 'user') {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => UserHome(),
+            ),
+          );
+        } else if (result.data()!['role'] == 'admin') {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => AdminHome(),
+            ),
+          );
+        } else if (result.data()!['role'] == 'dapur') {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => DapurHome(),
+            ),
+          );
+        }
       } else {
         print("User not Signed in");
       }
