@@ -87,39 +87,286 @@ class _MenuState extends State<Menu> with TickerProviderStateMixin {
               child: TabBarView(
             controller: tabController,
             children: [
+              //Listview makanan
               ListView.builder(
                   physics: BouncingScrollPhysics(),
                   shrinkWrap: true,
                   itemCount: 10,
                   itemBuilder: (context, index) {
-                    return Card(
-                      margin:
-                          EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                      child: ListTile(
-                        leading: Image.asset(
-                          "asset/images/nasi_goreng.jpeg",
-                          width: 80,
-                          height: 80,
+                    return Padding(
+                      //padding: EdgeInsets.symmetric(vertical: 9),
+                      padding: EdgeInsets.fromLTRB(10, 5, 10, 5),
+                      child: Container(
+                        width: 300,
+                        height: 100,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(10),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.grey,
+                              spreadRadius: 3,
+                              blurRadius: 10,
+                              offset: Offset(0, 3),
+                            ),
+                          ],
                         ),
-                        title: Text('Nama Menu'),
-                        subtitle: Text('Rp. 100.000'),
-                        trailing: Icon(Icons.add),
+                        child: Row(
+                          children: [
+                            Container(
+                              alignment: Alignment.center,
+                              child: Image.asset(
+                                'asset/images/nasi_goreng.png',
+                                width: 130,
+                                height: 100,
+                              ),
+                            ),
+                            Container(
+                              width: 190,
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceAround,
+                                children: [
+                                  Text(
+                                    'Nama Menu',
+                                    style: TextStyle(
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                  Text(
+                                    'Deskripsi Menu',
+                                    style: TextStyle(
+                                      fontSize: 15,
+                                      //fontWeight: FontWeight.bold
+                                    ),
+                                  ),
+                                  Text(
+                                    'Rp. 50.000',
+                                    style: TextStyle(
+                                      fontSize: 18,
+                                      //fontWeight: FontWeight.bold
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            Container(
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  SizedBox(
+                                    width: 30,
+                                    height: 30,
+                                    child: ElevatedButton(
+                                      onPressed: () {},
+                                      child: Text(
+                                        '+',
+                                        style: TextStyle(
+                                            color: Colors.white,
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                      style: ElevatedButton.styleFrom(
+                                        primary: Color(0xFFF0BB62),
+                                        shape: CircleBorder(),
+                                        padding: EdgeInsets.all(0),
+                                      ),
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    height: 5,
+                                  ),
+                                  Text(
+                                    '0',
+                                    style: TextStyle(
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                  SizedBox(
+                                    height: 5,
+                                  ),
+                                  SizedBox(
+                                    width: 30,
+                                    height: 30,
+                                    child: ElevatedButton(
+                                      onPressed: () {},
+                                      child: Text(
+                                        '-',
+                                        style: TextStyle(
+                                            color: Colors.white,
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                      style: ElevatedButton.styleFrom(
+                                        primary: Color(0xFFF0BB62),
+                                        shape: CircleBorder(),
+                                        padding: EdgeInsets.all(0),
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     );
                   }),
+              //Listview minuman
               ListView.builder(
                   physics: BouncingScrollPhysics(),
                   shrinkWrap: true,
                   itemCount: 10,
                   itemBuilder: (context, index) {
-                    return Card(
-                      margin:
-                          EdgeInsets.symmetric(horizontal: 30, vertical: 10),
-                      child: ListTile(
-                        leading: Icon(Icons.fastfood),
-                        title: Text('Nama Menu'),
-                        subtitle: Text('Rp. 100.000'),
-                        trailing: Icon(Icons.add),
+                    return Padding(
+                      //padding: EdgeInsets.symmetric(vertical: 9),
+                      padding: EdgeInsets.fromLTRB(10, 5, 10, 5),
+                      child: Container(
+                        width: 300,
+                        height: 100,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(10),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.grey,
+                              spreadRadius: 3,
+                              blurRadius: 10,
+                              offset: Offset(0, 3),
+                            ),
+                          ],
+                        ),
+                        child: Row(
+                          children: [
+                            Container(
+                              alignment: Alignment.center,
+                              child: Image.asset(
+                                'asset/images/lemon_tea.png',
+                                width: 130,
+                                height: 100,
+                              ),
+                            ),
+                            Container(
+                              width: 190,
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceAround,
+                                children: [
+                                  Text(
+                                    'Nama Menu',
+                                    style: TextStyle(
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                  Text(
+                                    'Deskripsi Menu',
+                                    style: TextStyle(
+                                      fontSize: 15,
+                                      //fontWeight: FontWeight.bold
+                                    ),
+                                  ),
+                                  Text(
+                                    'Rp. 50.000',
+                                    style: TextStyle(
+                                      fontSize: 18,
+                                      //fontWeight: FontWeight.bold
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            Container(
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  SizedBox(
+                                    width: 30,
+                                    height: 30,
+                                    child: ElevatedButton(
+                                      onPressed: () {},
+                                      child: Text(
+                                        '+',
+                                        style: TextStyle(
+                                            color: Colors.white,
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                      style: ElevatedButton.styleFrom(
+                                        primary: Color(0xFFF0BB62),
+                                        shape: CircleBorder(),
+                                        padding: EdgeInsets.all(0),
+                                      ),
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    height: 5,
+                                  ),
+                                  Text(
+                                    '0',
+                                    style: TextStyle(
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                  SizedBox(
+                                    height: 5,
+                                  ),
+                                  SizedBox(
+                                    width: 30,
+                                    height: 30,
+                                    child: ElevatedButton(
+                                      onPressed: () {},
+                                      child: Text(
+                                        '-',
+                                        style: TextStyle(
+                                            color: Colors.white,
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                      style: ElevatedButton.styleFrom(
+                                        primary: Color(0xFFF0BB62),
+                                        shape: CircleBorder(),
+                                        padding: EdgeInsets.all(0),
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            // Padding(
+                            //   padding: EdgeInsets.symmetric(vertical: 8),
+                            //   child: Container(
+                            //     padding: EdgeInsets.all(5),
+                            //     decoration: BoxDecoration(
+                            //       color: Color(0xFFF0BB62),
+                            //       borderRadius: BorderRadius.circular(10),
+                            //     ),
+                            //     child: Column(
+                            //       mainAxisAlignment:
+                            //           MainAxisAlignment.spaceBetween,
+                            //       children: [
+                            //         Icon(
+                            //           CupertinoIcons.minus,
+                            //           color: Color(0xFFF4EEA9),
+                            //         ),
+                            //         Text(
+                            //           "0",
+                            //           style: TextStyle(
+                            //             fontSize: 18,
+                            //             fontWeight: FontWeight.bold,
+                            //           ),
+                            //         ),
+                            //         Icon(
+                            //           CupertinoIcons.minus,
+                            //           color: Color(0xFFF4EEA9),
+                            //         ),
+                            //       ],
+                            //     ),
+                            //   ),
+                            // ),
+                          ],
+                        ),
                       ),
                     );
                   }),
@@ -130,6 +377,30 @@ class _MenuState extends State<Menu> with TickerProviderStateMixin {
     );
   }
 }
+
+
+
+
+// ListView.builder(
+              //     physics: BouncingScrollPhysics(),
+              //     shrinkWrap: true,
+              //     itemCount: 10,
+              //     itemBuilder: (context, index) {
+              //       return Card(
+              //         margin:
+              //             EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+              //         child: ListTile(
+              //           leading: Image.asset(
+              //             "asset/images/nasi_goreng.png",
+              //             width: 80,
+              //             height: 80,
+              //           ),
+              //           title: Text('Nama Menu'),
+              //           subtitle: Text('Rp. 100.000'),
+              //           trailing: Icon(Icons.add),
+              //         ),
+              //       );
+              //     }),
 
 // return MaterialApp(
 //       home: DefaultTabController(
