@@ -12,7 +12,6 @@ class Menu extends StatefulWidget {
   State<Menu> createState() => _MenuState();
 }
 
-
 class _MenuState extends State<Menu> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
@@ -23,27 +22,31 @@ class _MenuState extends State<Menu> with TickerProviderStateMixin {
           SizedBox(
             height: 15,
           ),
-          Text('MENU'),
+          Text(
+            'MENU',
+            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+          ),
           SizedBox(
-            height: 20,
+            height: 10,
           ),
           Card(
             shape:
                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
-            elevation: 5,
+            elevation: 4,
             child: Container(
               decoration: BoxDecoration(
                 color: Color(0xFFF0BB62),
-                borderRadius: BorderRadius.circular(15),
+                borderRadius: BorderRadius.circular(12),
               ),
               child: TabBar(
                 indicator: BoxDecoration(
                   color: Color(0xFFF4EEA9),
-                  borderRadius: BorderRadius.circular(15),
+                  borderRadius: BorderRadius.circular(12),
                 ),
                 controller: tabController,
                 isScrollable: true,
-                labelPadding: EdgeInsets.symmetric(horizontal: 90),
+                //labelPadding: EdgeInsets.symmetric(horizontal: 30),
+                labelPadding: EdgeInsets.fromLTRB(80, 0, 80, 0),
                 tabs: [
                   Tab(
                     child: Align(
@@ -59,31 +62,74 @@ class _MenuState extends State<Menu> with TickerProviderStateMixin {
               ),
             ),
           ),
-          // Expanded(child: TabBarView(
-          //   controller: tabController,
-          //   children: [
-          //     ListView.builder(
-          //       physics: BouncingScrollPhysics(),
-          //       shrinkWrap: true,
-          //       itemCount: 4,
-          //       itemBuilder: (context, index) {
-          //         return Card(
-          //           margin: EdgeInsets.symmetric(horizontal: 30, vertical: 15),
-          //           child: ListTile(
-
-          //           ),
-          //         );
-          //       }
-          //       )
-          //   ],
-          // )),
+          SizedBox(
+            height: 8,
+          ),
+          Container(
+            padding: EdgeInsets.all(10),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(15),
+              color: Color(0xFFF4EEA9),
+            ),
+            child: Column(
+              children: [
+                Text(
+                  'No Meja / No Transaksi : 5 / A123 ',
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                ),
+              ],
+            ),
+          ),
+          SizedBox(
+            height: 5,
+          ),
+          Expanded(
+              child: TabBarView(
+            controller: tabController,
+            children: [
+              ListView.builder(
+                  physics: BouncingScrollPhysics(),
+                  shrinkWrap: true,
+                  itemCount: 10,
+                  itemBuilder: (context, index) {
+                    return Card(
+                      margin:
+                          EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                      child: ListTile(
+                        leading: Image.asset(
+                          "asset/images/nasi_goreng.jpeg",
+                          width: 80,
+                          height: 80,
+                        ),
+                        title: Text('Nama Menu'),
+                        subtitle: Text('Rp. 100.000'),
+                        trailing: Icon(Icons.add),
+                      ),
+                    );
+                  }),
+              ListView.builder(
+                  physics: BouncingScrollPhysics(),
+                  shrinkWrap: true,
+                  itemCount: 10,
+                  itemBuilder: (context, index) {
+                    return Card(
+                      margin:
+                          EdgeInsets.symmetric(horizontal: 30, vertical: 10),
+                      child: ListTile(
+                        leading: Icon(Icons.fastfood),
+                        title: Text('Nama Menu'),
+                        subtitle: Text('Rp. 100.000'),
+                        trailing: Icon(Icons.add),
+                      ),
+                    );
+                  }),
+            ],
+          )),
         ],
       ),
     );
   }
 }
-
-
 
 // return MaterialApp(
 //       home: DefaultTabController(
