@@ -64,7 +64,7 @@ class _LogInScreenState extends State<LogInScreen> {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => AdminHome(),
+              builder: (context) => Admin(),
             ),
           );
         } else if (result.data()!['role'] == 'dapur') {
