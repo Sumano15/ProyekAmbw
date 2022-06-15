@@ -62,6 +62,9 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - asset/images/menu.png
+    - asset/images/qrcode.png
+    - asset/images/nasi_goreng.png
+    - asset/images/lemon_tea.png
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
   # For details regarding adding assets from package dependencies, see
