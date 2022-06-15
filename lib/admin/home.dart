@@ -28,10 +28,10 @@ class _AdminState extends State<Admin> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBar(
-        elevation: 20,
-        title: const Text('GoogleNavBar'),
-      ),
+      // appBar: AppBar(
+      //   elevation: 20,
+      //   title: const Text('GoogleNavBar'),
+      // ),
       body: _Page[_selectedIndex],
       bottomNavigationBar: Container(
         decoration: BoxDecoration(
