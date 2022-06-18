@@ -1,6 +1,7 @@
-import 'dart:html';
+import 'dart:io';
 
 import 'package:dropdown_button2/dropdown_button2.dart';
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
@@ -16,6 +17,38 @@ class BuatMenu extends StatefulWidget {
 }
 
 class _BuatMenuState extends State<BuatMenu> {
+  FilePickerResult? result;
+  String? fileName;
+  PlatformFile? pickedfile;
+  bool isLoading = false;
+  File? fileToDisplay;
+
+  void pickFile() async {
+    try {
+      setState(() {
+        isLoading = true;
+      });
+
+      result = await FilePicker.platform.pickFiles(
+        type: FileType.custom,
+        allowedExtensions: ['jpg', 'png', 'jpeg'],
+        allowMultiple: false,
+      );
+
+      if (result != null) {
+        fileName = result!.files.first.name;
+        pickedfile = result!.files.first;
+        fileToDisplay = File(pickedfile!.path.toString());
+      }
+
+      setState(() {
+        isLoading = false;
+      });
+    } catch (e) {
+      print(e);
+    }
+  }
+
   final items = ['Makanan', 'Minuman'];
   String? value;
   @override
@@ -31,23 +64,42 @@ class _BuatMenuState extends State<BuatMenu> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Align(
-                  alignment: Alignment.center,
-                  child: CircleAvatar(
-                    radius: 100,
-                    backgroundColor: Colors.white,
-                    child: ClipOval(
-                      child: SizedBox(
-                        width: 200,
-                        height: 200,
-                        child: Image.network(
-                          "https://i0.wp.com/www.charitycomms.org.uk/wp-content/uploads/2019/02/placeholder-image-square.jpg?ssl=1",
-                          fit: BoxFit.fill,
+                if (fileToDisplay == null)
+                  Align(
+                    alignment: Alignment.center,
+                    child: CircleAvatar(
+                      radius: 100,
+                      backgroundColor: Colors.white,
+                      child: ClipOval(
+                        child: SizedBox(
+                          width: 200,
+                          height: 200,
+                          child: Image.network(
+                            "https://i0.wp.com/www.charitycomms.org.uk/wp-content/uploads/2019/02/placeholder-image-square.jpg?ssl=1",
+                            fit: BoxFit.fill,
+                          ),
                         ),
                       ),
                     ),
                   ),
-                ),
+                if (fileToDisplay != null)
+                  Align(
+                    alignment: Alignment.center,
+                    child: CircleAvatar(
+                      radius: 100,
+                      backgroundColor: Colors.white,
+                      child: ClipOval(
+                        child: SizedBox(
+                          width: 200,
+                          height: 200,
+                          child: Image.file(
+                            fileToDisplay!,
+                            fit: BoxFit.fill,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
                 Padding(
                   padding: EdgeInsets.only(top: 60.0),
                   child: IconButton(
@@ -55,7 +107,9 @@ class _BuatMenuState extends State<BuatMenu> {
                       Icons.camera_alt,
                       size: 30,
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      pickFile();
+                    },
                   ),
                 )
               ],
