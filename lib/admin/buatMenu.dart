@@ -31,7 +31,7 @@ class _BuatMenuState extends State<BuatMenu> {
 
       result = await FilePicker.platform.pickFiles(
         type: FileType.custom,
-        allowedExtensions: ['jpg', 'png', 'jpeg'],
+        allowedExtensions: ['jpg', 'png', 'jpeg', 'JPG', 'PNG', 'JPEG'],
         allowMultiple: false,
       );
 
