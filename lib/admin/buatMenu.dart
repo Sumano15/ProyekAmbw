@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:file_picker/file_picker.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
@@ -31,7 +32,7 @@ class _BuatMenuState extends State<BuatMenu> {
 
       result = await FilePicker.platform.pickFiles(
         type: FileType.custom,
-        allowedExtensions: ['jpg', 'png', 'jpeg', 'JPG', 'PNG', 'JPEG'],
+        allowedExtensions: ['jpg', 'png', 'jpeg'],
         allowMultiple: false,
       );
 
@@ -47,6 +48,14 @@ class _BuatMenuState extends State<BuatMenu> {
     } catch (e) {
       print(e);
     }
+  }
+
+  Future uploadFotoToStorage() async {
+    final path = "menu/$fileName";
+    final file = File(pickedfile!.path.toString());
+
+    final ref = FirebaseStorage.instance.ref().child(path);
+    ref.putFile(file);
   }
 
   final items = ['Makanan', 'Minuman'];
@@ -165,7 +174,9 @@ class _BuatMenuState extends State<BuatMenu> {
                   borderRadius: BorderRadius.circular(25),
                 ),
               ),
-              onPressed: () {},
+              onPressed: () {
+                uploadFotoToStorage();
+              },
               child: Text(
                 'Add Menu',
                 style: TextStyle(
