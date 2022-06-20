@@ -9,6 +9,9 @@ class DatabaseMakanan {
   }
 
   static Future<void> addData({required menu data_makanan}) async {
+    // final docMakanan = FirebaseFirestore.instance.collection('makanan').doc();
+    // await docMakanan.set(data_makanan.toJson());
+
     DocumentReference docRef = tblMakanan.doc();
     await docRef
         .set(data_makanan.toJson())

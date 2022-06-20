@@ -270,13 +270,17 @@ class _BuatMenuState extends State<BuatMenu> {
 
   Future uploadFotoToStorage() async {
     final path = "menu/$fileName";
-    URL = path;
     // final file = File(pickedfile!.path.toString());
     final file = File(pickedfile!.path!.toString());
 
     final ref = FirebaseStorage.instance.ref().child(path);
     ref.putFile(file);
+    String imageUrl = await ref.getDownloadURL();
+    print(imageUrl);
+    URL = imageUrl;
   }
+
+
 
   final items = ['Makanan', 'Minuman'];
   String? value;
@@ -398,8 +402,11 @@ class _BuatMenuState extends State<BuatMenu> {
               ),
               onPressed: () {
                 uploadFotoToStorage();
-                //final dtBaru = menu(nama: _namaMakananController.toString(), harga: _hargaController.toString(), gambar: URL);
-                
+                final dtBaru = menu(
+                    nama: _namaMakananController.text.toString(),
+                    harga: _hargaController.text.toString(),
+                    gambar: URL);
+                DatabaseMakanan.addData(data_makanan: dtBaru);
               },
               child: Text(
                 'Add Menu',
@@ -423,4 +430,3 @@ class _BuatMenuState extends State<BuatMenu> {
     );
   }
 }
-
