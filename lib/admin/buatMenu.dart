@@ -208,7 +208,7 @@
 import 'dart:io';
 
 import 'package:ambwproyek/dataclass.dart';
-import 'package:ambwproyek/dbservices.dart';
+import 'package:ambwproyek/menuService.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -398,7 +398,8 @@ class _BuatMenuState extends State<BuatMenu> {
               ),
               onPressed: () {
                 uploadFotoToStorage();
-                final dtBaru = menu(kategori: value.toString(), nama: _namaMakananController.toString(), harga: _hargaController.toString(), gambar: URL);
+                final dtBaru = menu(nama: _namaMakananController.toString(), harga: _hargaController.toString(), gambar: URL);
+                
               },
               child: Text(
                 'Add Menu',

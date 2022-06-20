@@ -33,20 +33,20 @@ class akun {
 }
 
 class menu {
-  final String kategori;
+  //final String kategori;
   final String nama;
   final String harga;
   final String gambar;
 
   menu({
-    required this.kategori,
+    //required this.kategori,
     required this.nama,
     required this.harga,
     required this.gambar,
   });
 
   Map<String, dynamic> toJson() => {
-        'Kategori': kategori,
+        //'Kategori': kategori,
         'Nama': nama,
         'Harga': harga,
         'Gambar': gambar,
@@ -54,10 +54,11 @@ class menu {
 
   factory menu.fromJson(Map<String, dynamic> json) {
     return menu(
-      kategori: json['Kategori'],
+      //kategori: json['Kategori'],
       nama: json['Nama'],
       harga: json['Harga'],
       gambar: json['Gambar'],
     );
   }
+
 }
