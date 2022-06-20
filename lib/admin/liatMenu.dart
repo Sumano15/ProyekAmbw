@@ -83,6 +83,18 @@ class _LiatMenuState extends State<LiatMenu> with TickerProviderStateMixin {
                             return ListTile(
                               title: Text(doc['Nama']),
                               subtitle: Text(doc['Harga']),
+                              leading: ConstrainedBox(
+                                constraints: BoxConstraints(
+                                  minWidth: 44,
+                                  minHeight: 44,
+                                  maxWidth: 64,
+                                  maxHeight: 64,
+                                ),
+                                child: Image.network(
+                                  doc['Gambar'],
+                                  fit: BoxFit.cover,
+                                ),
+                              ),
                             );
                           },
                         );
@@ -109,6 +121,18 @@ class _LiatMenuState extends State<LiatMenu> with TickerProviderStateMixin {
                             return ListTile(
                               title: Text(doc['nama']),
                               subtitle: Text(doc['harga']),
+                              leading: ConstrainedBox(
+                                constraints: BoxConstraints(
+                                  minWidth: 44,
+                                  minHeight: 44,
+                                  maxWidth: 64,
+                                  maxHeight: 64,
+                                ),
+                                child: Image.network(
+                                  doc['gambar'],
+                                  fit: BoxFit.cover,
+                                ),
+                              ),
                             );
                           },
                         );
