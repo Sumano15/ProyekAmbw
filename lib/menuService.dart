@@ -1,7 +1,8 @@
 import 'package:ambwproyek/dataclass.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-CollectionReference tblMakanan = FirebaseFirestore.instance.collection('makanan');
+CollectionReference tblMakanan =
+    FirebaseFirestore.instance.collection('makanan');
 
 class DatabaseMakanan {
   static Stream<QuerySnapshot> getData() {
