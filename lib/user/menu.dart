@@ -91,7 +91,7 @@ class _MenuState extends State<Menu> with TickerProviderStateMixin {
             controller: tabController,
             children: [
               //Listview makanan
-              ListView.builder( 
+              ListView.builder(
                   physics: BouncingScrollPhysics(),
                   shrinkWrap: true,
                   itemCount: 10,
@@ -384,8 +384,4 @@ class _MenuState extends State<Menu> with TickerProviderStateMixin {
       ),
     );
   }
-
 }
-
-
-
