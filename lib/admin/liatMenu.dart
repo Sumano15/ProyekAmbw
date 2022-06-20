@@ -85,10 +85,10 @@ class _LiatMenuState extends State<LiatMenu> with TickerProviderStateMixin {
                               subtitle: Text(doc['Harga']),
                               leading: ConstrainedBox(
                                 constraints: BoxConstraints(
-                                  minWidth: 44,
-                                  minHeight: 44,
-                                  maxWidth: 64,
-                                  maxHeight: 64,
+                                  minWidth: 100,
+                                  minHeight: 100,
+                                  maxWidth: 200,
+                                  maxHeight: 200,
                                 ),
                                 child: Image.network(
                                   doc['Gambar'],
@@ -123,10 +123,10 @@ class _LiatMenuState extends State<LiatMenu> with TickerProviderStateMixin {
                               subtitle: Text(doc['harga']),
                               leading: ConstrainedBox(
                                 constraints: BoxConstraints(
-                                  minWidth: 44,
-                                  minHeight: 44,
-                                  maxWidth: 64,
-                                  maxHeight: 64,
+                                  minWidth: 100,
+                                  minHeight: 100,
+                                  maxWidth: 200,
+                                  maxHeight: 200,
                                 ),
                                 child: Image.network(
                                   doc['gambar'],

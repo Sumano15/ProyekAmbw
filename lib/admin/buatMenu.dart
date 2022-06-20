@@ -238,7 +238,7 @@ class _BuatMenuState extends State<BuatMenu> {
   bool isLoading = false;
   File? fileToDisplay;
 
-  final _namaMakananController = TextEditingController();
+  final _namaMenuController = TextEditingController();
   final _hargaController = TextEditingController();
 
   void pickFile() async {
@@ -367,7 +367,7 @@ class _BuatMenuState extends State<BuatMenu> {
               height: 20,
             ),
             TextField(
-              controller: _namaMakananController,
+              controller: _namaMenuController,
               decoration: InputDecoration(
                 labelText: 'Nama Menu',
                 labelStyle: TextStyle(fontSize: 20),
@@ -403,10 +403,15 @@ class _BuatMenuState extends State<BuatMenu> {
               onPressed: () {
                 uploadFotoToStorage();
                 final dtBaru = menu(
-                    nama: _namaMakananController.text.toString(),
+                    nama: _namaMenuController.text.toString(),
                     harga: _hargaController.text.toString(),
                     gambar: URL);
-                DatabaseMakanan.addData(data_makanan: dtBaru);
+                    if (value == "Makanan") {
+                      DatabaseMakanan.addData(data_makanan: dtBaru);
+                    }
+                    else if (value == "Minuman") {
+                      DatabaseMinuman.addData(data_minuman: dtBaru);
+                    }
               },
               child: Text(
                 'Add Menu',
