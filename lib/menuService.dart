@@ -3,27 +3,37 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 CollectionReference tblMakanan = FirebaseFirestore.instance.collection('makanan');
 
-class DatabaseMenu {
+class DatabaseMakanan {
   static Stream<QuerySnapshot> getData() {
     return tblMakanan.snapshots();
   }
 
-  static Future<void> addData({required menu data}) async {
+  static Future<void> addData({required menu data_makanan}) async {
     DocumentReference docRef = tblMakanan.doc();
     await docRef
-        .set(data.toJson())
+        .set(data_makanan.toJson())
         .whenComplete(
           () => print("Data berhasil ditambahkan"),
         )
         .catchError((e) => print(e.toString()));
   }
+}
 
-  // static Future<void> tambahData({required menu itemMenu}) async {
-  //   DocumentReference docRef = tblMenu.doc(itemMenu.nama);
-  //   await docRef
-  //       .set(itemMenu.toJson())
-  //       .whenComplete(() => print("Data berhasil diTambah"))
-  //       .catchError((e) => print(e));
-  // }
-  
+CollectionReference tblMinuman =
+    FirebaseFirestore.instance.collection('minuman');
+
+class DatabaseMinuman {
+  static Stream<QuerySnapshot> getData() {
+    return tblMinuman.snapshots();
+  }
+
+  static Future<void> addData({required menu data_minuman}) async {
+    DocumentReference docRef = tblMinuman.doc();
+    await docRef
+        .set(data_minuman.toJson())
+        .whenComplete(
+          () => print("Data berhasil ditambahkan"),
+        )
+        .catchError((e) => print(e.toString()));
+  }
 }
