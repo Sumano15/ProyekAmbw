@@ -1,3 +1,6 @@
+import 'package:ambwproyek/admin/buatMenu.dart';
+import 'package:ambwproyek/admin/editData.dart';
+import 'package:ambwproyek/dataclass.dart';
 import 'package:ambwproyek/menuService.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -95,6 +98,22 @@ class _LiatMenuState extends State<LiatMenu> with TickerProviderStateMixin {
                                   fit: BoxFit.cover,
                                 ),
                               ),
+                              onTap: () {
+                                final dt = menu(
+                                    nama: doc['Nama'],
+                                    harga: doc['Harga'],
+                                    gambar: doc['Gambar']);
+                                String id = doc.id;
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => EditData(
+                                            detData: dt,
+                                            kategori: "makanan",
+                                            id: id,
+                                          )),
+                                );
+                              },
                             );
                           },
                         );
@@ -119,8 +138,8 @@ class _LiatMenuState extends State<LiatMenu> with TickerProviderStateMixin {
                           itemBuilder: (context, index) {
                             DocumentSnapshot doc = snapshot.data!.docs[index];
                             return ListTile(
-                              title: Text(doc['nama']),
-                              subtitle: Text(doc['harga']),
+                              title: Text(doc['Nama']),
+                              subtitle: Text(doc['Harga']),
                               leading: ConstrainedBox(
                                 constraints: BoxConstraints(
                                   minWidth: 100,
@@ -129,7 +148,7 @@ class _LiatMenuState extends State<LiatMenu> with TickerProviderStateMixin {
                                   maxHeight: 200,
                                 ),
                                 child: Image.network(
-                                  doc['gambar'],
+                                  doc['Gambar'],
                                   fit: BoxFit.cover,
                                 ),
                               ),

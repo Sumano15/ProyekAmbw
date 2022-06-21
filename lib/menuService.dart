@@ -18,6 +18,17 @@ class DatabaseMakanan {
         )
         .catchError((e) => print(e.toString()));
   }
+
+  static Future<void> updateData(
+      {required menu data_makanan, required String id}) async {
+    DocumentReference docRef = tblMakanan.doc(id);
+    await docRef
+        .update(data_makanan.toJson())
+        .whenComplete(
+          () => print("Data berhasil diubah"),
+        )
+        .catchError((e) => print(e.toString()));
+  }
 }
 
 CollectionReference tblMinuman =

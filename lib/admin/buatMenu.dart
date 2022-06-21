@@ -225,7 +225,8 @@ void main() async {
 }
 
 class BuatMenu extends StatefulWidget {
-  const BuatMenu({Key? key}) : super(key: key);
+  final menu? detailMenu;
+  const BuatMenu({Key? key, this.detailMenu}) : super(key: key);
 
   @override
   State<BuatMenu> createState() => _BuatMenuState();
@@ -279,8 +280,6 @@ class _BuatMenuState extends State<BuatMenu> {
     print(imageUrl);
     URL = imageUrl;
   }
-
-
 
   final items = ['Makanan', 'Minuman'];
   String? value;
@@ -406,12 +405,11 @@ class _BuatMenuState extends State<BuatMenu> {
                     nama: _namaMenuController.text.toString(),
                     harga: _hargaController.text.toString(),
                     gambar: URL);
-                    if (value == "Makanan") {
-                      DatabaseMakanan.addData(data_makanan: dtBaru);
-                    }
-                    else if (value == "Minuman") {
-                      DatabaseMinuman.addData(data_minuman: dtBaru);
-                    }
+                if (value == "Makanan") {
+                  DatabaseMakanan.addData(data_makanan: dtBaru);
+                } else if (value == "Minuman") {
+                  DatabaseMinuman.addData(data_minuman: dtBaru);
+                }
               },
               child: Text(
                 'Add Menu',
