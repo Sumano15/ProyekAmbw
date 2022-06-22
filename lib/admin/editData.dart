@@ -209,10 +209,7 @@ class _EditDataState extends State<EditData> {
                           actions: <Widget>[
                             ElevatedButton(
                               onPressed: () {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => Admin()));
+                                Navigator.pop(ctx);
                               },
                               child: Text("Ok"),
                             ),
@@ -220,7 +217,24 @@ class _EditDataState extends State<EditData> {
                         ),
                       );
                     } else if (kategori == "minuman") {
-                      DatabaseMinuman.addData(data_minuman: dtBaru);
+                      print(idmenu.toString());
+                      DatabaseMinuman.updateData(
+                          data_minuman: dtBaru, id: idmenu.toString());
+                      showDialog(
+                        context: context,
+                        builder: (ctx) => AlertDialog(
+                          title: Text("Your Data has been updated"),
+                          content: Text("click ok to continue"),
+                          actions: <Widget>[
+                            ElevatedButton(
+                              onPressed: () {
+                                Navigator.pop(ctx);
+                              },
+                              child: Text("Ok"),
+                            ),
+                          ],
+                        ),
+                      );
                     }
                   },
                   child: Text(

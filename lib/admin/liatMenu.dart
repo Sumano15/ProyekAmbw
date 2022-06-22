@@ -114,6 +114,31 @@ class _LiatMenuState extends State<LiatMenu> with TickerProviderStateMixin {
                                           )),
                                 );
                               },
+                              onLongPress: () {
+                                String idmenu = doc.id;
+                                showDialog(
+                                  context: context,
+                                  builder: (ctx) => AlertDialog(
+                                    title: Text(
+                                        "Are You Sure Want To Delete This Data?"),
+                                    content: Text("click ok to continue"),
+                                    actions: <Widget>[
+                                      ElevatedButton(
+                                        onPressed: () {
+                                          DatabaseMakanan.deleteData(
+                                              id: idmenu);
+                                          Navigator.pop(ctx);
+                                          ScaffoldMessenger.of(context)
+                                              .showSnackBar(SnackBar(
+                                                  content: Text(
+                                                      '${doc['Nama']} deleted')));
+                                        },
+                                        child: Text("Ok"),
+                                      ),
+                                    ],
+                                  ),
+                                );
+                              },
                             );
                           },
                         );
@@ -152,6 +177,48 @@ class _LiatMenuState extends State<LiatMenu> with TickerProviderStateMixin {
                                   fit: BoxFit.cover,
                                 ),
                               ),
+                              onTap: () {
+                                final dt = menu(
+                                    nama: doc['Nama'],
+                                    harga: doc['Harga'],
+                                    gambar: doc['Gambar']);
+                                String id = doc.id;
+                                print(id);
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => EditData(
+                                            detData: dt,
+                                            kategori: "minuman",
+                                            id: id,
+                                          )),
+                                );
+                              },
+                              onLongPress: () {
+                                String idmenu = doc.id;
+                                showDialog(
+                                  context: context,
+                                  builder: (ctx) => AlertDialog(
+                                    title: Text(
+                                        "Are You Sure Want To Delete This Data?"),
+                                    content: Text("click ok to continue"),
+                                    actions: <Widget>[
+                                      ElevatedButton(
+                                        onPressed: () {
+                                          DatabaseMinuman.deleteData(
+                                              id: idmenu);
+                                          Navigator.pop(ctx);
+                                          ScaffoldMessenger.of(context)
+                                              .showSnackBar(SnackBar(
+                                                  content: Text(
+                                                      '${doc['Nama']} deleted')));
+                                        },
+                                        child: Text("Ok"),
+                                      ),
+                                    ],
+                                  ),
+                                );
+                              },
                             );
                           },
                         );
