@@ -57,3 +57,29 @@ class menu {
     );
   }
 }
+
+class transaksi {
+  final menu dataMenu;
+  final String jumlah;
+  final String total;
+
+  transaksi({
+    required this.dataMenu,
+    required this.jumlah,
+    required this.total,
+  });
+
+  Map<String, dynamic> toJson() => {
+        'dataMenu': dataMenu.toJson(),
+        'jumlah': jumlah,
+        'total': total,
+      };
+
+  factory transaksi.fromJson(Map<String, dynamic> json) {
+    return transaksi(
+      dataMenu: menu.fromJson(json['dataMenu']),
+      jumlah: json['jumlah'],
+      total: json['total'],
+    );
+  }
+}
