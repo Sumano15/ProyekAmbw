@@ -1,6 +1,9 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
 
+import 'package:ambwproyek/user/catProduk.dart';
 import 'package:ambwproyek/user/detail_pembayaran.dart';
+import 'package:ambwproyek/user/detail_pembayaran2.dart';
+import 'package:ambwproyek/user/halaman_menu.dart';
 import 'package:ambwproyek/user/menu.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
@@ -19,8 +22,10 @@ class _Halaman_userState extends State<Halaman_user> {
   static const TextStyle optionStyle =
       TextStyle(fontSize: 30, fontWeight: FontWeight.w600);
   static const List<Widget> _Page = [
-    Menu(),
-    Detail_pembayaran(),
+    //Menu(),
+    HalamanMenu(),
+    DetailPembayarand(),
+    //CatProduk(),
   ];
 
   @override
