@@ -36,4 +36,5 @@ class CartController extends GetxController {
       .toList()
       .reduce((value, element) => value + element)
       .toString();
+
 }

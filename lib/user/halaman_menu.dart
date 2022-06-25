@@ -47,14 +47,6 @@ class HalamanMenu extends StatelessWidget {
               ),
             ),
             CatProdukMinuman(),
-            //Detail_pembayaran(),
-            // ElevatedButton(onPressed: () {
-            //   Navigator.push(
-            //         context,
-            //         MaterialPageRoute(
-            //             builder: (context) => Detail_pembayaran()),
-            //       );
-            // } , child: Text('Detail Pembayaran')),
           ],
         ),
       ),

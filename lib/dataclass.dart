@@ -72,6 +72,8 @@ class menu {
 
 
 
+
+
 class transaksi {
   final menu dataMenu;
   final String jumlah;
