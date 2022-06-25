@@ -97,6 +97,7 @@ class _MenuState extends State<Menu> with TickerProviderStateMixin {
             child: TabBarView(
               controller: tabController,
               children: [
+                Text("makanan"),
                 StreamBuilder<QuerySnapshot>(
                   stream: DatabaseMakanan.getData(),
                   builder: (context, snapshot) {
@@ -123,33 +124,6 @@ class _MenuState extends State<Menu> with TickerProviderStateMixin {
                                 doc['Gambar'],
                                 fit: BoxFit.cover,
                               ),
-                            ),
-                            trailing: Row(
-                              mainAxisSize: MainAxisSize.min,
-                              children: <Widget>[
-                                IconButton(
-                                  icon: Icon(Icons.remove),
-                                  onPressed: () {
-                                    setState(
-                                      () {
-                                        _itemCount--;
-                                      },
-                                    );
-                                  },
-                                ),
-                                Text(_itemCount.toString()),
-                                IconButton(
-                                  icon: Icon(Icons.add),
-                                  onPressed: () {
-                                    setState(
-                                      () {
-                                        _itemCount++;
-                                        // cartController.addProduk(menu.produk[index]);
-                                      },
-                                    );
-                                  },
-                                )
-                              ],
                             ),
                           );
                         },

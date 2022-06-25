@@ -14,7 +14,7 @@ class CartTotal extends StatelessWidget {
   Widget build(BuildContext context) {
     return Obx(
       () => Container(
-        padding: EdgeInsets.symmetric(horizontal: 75),
+        padding: EdgeInsets.symmetric(horizontal: 50),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
