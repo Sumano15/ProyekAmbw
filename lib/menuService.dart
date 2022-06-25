@@ -80,3 +80,17 @@ class DatabaseMinuman {
         .catchError((e) => print(e.toString()));
   }
 }
+
+class FirestoreDB {
+  final FirebaseFirestore _firebaseFirestore = FirebaseFirestore.instance;
+
+  Stream<List<menu>> getAllProducts() {
+    return _firebaseFirestore
+      .collection('makanan')
+      .snapshots()
+      .map((snapshot) {
+        return snapshot.docs.map((doc) => menu.fromSnapshot(doc)).toList();
+      }
+      );
+  }
+}

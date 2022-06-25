@@ -22,7 +22,7 @@ class Detail_pembayaran extends StatelessWidget {
             children: [
               CartProduk(),
               Text('hehe'),
-              //CartTotal(),
+              CartTotal(),
               // Row(
               //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
               //   children: [

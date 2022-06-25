@@ -1,4 +1,5 @@
 import 'package:ambwproyek/dataclass.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class CartController extends GetxController {
@@ -11,7 +12,6 @@ class CartController extends GetxController {
     } else {
       _products[product] = 1;
     }
-
     Get.snackbar("Item ditambah", "Item ${product.nama} ditambah",
         snackPosition: SnackPosition.BOTTOM, duration: Duration(seconds: 2));
   }
@@ -32,5 +32,7 @@ class CartController extends GetxController {
 
   get total => _products.entries
       .map((product) => product.key.harga * product.value)
-      .toList().reduce((value, element) => value + element).toString();
+      .toList()
+      .reduce((value, element) => value + element)
+      .toString();
 }
