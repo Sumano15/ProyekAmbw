@@ -1,7 +1,6 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
 
 import 'package:ambwproyek/user/catProduk.dart';
-import 'package:ambwproyek/user/detail_pembayaran.dart';
 import 'package:ambwproyek/user/detail_pembayaran2.dart';
 import 'package:ambwproyek/user/halaman_menu.dart';
 import 'package:ambwproyek/user/menu.dart';

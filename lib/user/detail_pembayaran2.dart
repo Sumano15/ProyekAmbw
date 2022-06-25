@@ -1,4 +1,3 @@
-import 'package:ambwproyek/user/detail_pembayaran.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -18,25 +17,6 @@ class DetailPembayarand extends StatelessWidget {
             children: [
               CartProduk(),
               CartTotal(),
-              // Row(
-              //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              //   children: [
-              //     Text(
-              //       'Total',
-              //       style: TextStyle(
-              //         fontSize: 24,
-              //         fontWeight: FontWeight.bold,
-              //       ),
-              //     ),
-              //     Text(
-              //       '${controller.total}',
-              //       style: TextStyle(
-              //         fontSize: 24,
-              //         fontWeight: FontWeight.bold,
-              //       ),
-              //     ),
-              //   ],
-              // ),
             ],
           ),
         ),
