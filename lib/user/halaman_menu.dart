@@ -15,6 +15,7 @@ class HalamanMenu extends StatelessWidget {
       body: SafeArea(
         child: Column(
           children: [
+            Text('thh'),
             CatProduk(),
             //Detail_pembayaran(),
             // ElevatedButton(onPressed: () {
