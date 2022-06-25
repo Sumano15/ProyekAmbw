@@ -9,7 +9,7 @@ class ProductController extends GetxController {
 
   @override
   void onInit() {
-    products.bindStream(FirestoreDB().getAllProducts());
+    products.bindStream(FirestoreDB().getAllMakanan());
     super.onInit();
   }
 

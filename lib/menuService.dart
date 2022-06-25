@@ -84,7 +84,7 @@ class DatabaseMinuman {
 class FirestoreDB {
   final FirebaseFirestore _firebaseFirestore = FirebaseFirestore.instance;
 
-  Stream<List<menu>> getAllProducts() {
+  Stream<List<menu>> getAllMakanan() {
     return _firebaseFirestore
       .collection('makanan')
       .snapshots()
