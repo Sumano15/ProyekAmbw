@@ -66,3 +66,64 @@ class CatProdukCard extends StatelessWidget {
     );
   }
 }
+
+// MINUMAN
+
+class CatProdukMinuman extends StatelessWidget {
+  final productControllerMinuman = Get.put(ProductControllerMinuman());
+  CatProdukMinuman({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Obx(
+      () => Flexible(
+          child: ListView.builder(
+              itemCount: productControllerMinuman.products.length,
+              itemBuilder: (BuildContext context, int index) {
+                return CatProdukCardMinuman(index: index);
+              })),
+    );
+  }
+}
+
+class CatProdukCardMinuman extends StatelessWidget {
+  final cartController = Get.put(CartController());
+  final ProductControllerMinuman productControllerMinuman = Get.find();
+  final int index;
+  CatProdukCardMinuman({Key? key, required this.index}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+      child: Row(
+        children: [
+          CircleAvatar(
+            radius: 40,
+            backgroundImage: NetworkImage(
+              productControllerMinuman.products[index].gambar,
+            ),
+          ),
+          SizedBox(
+            width: 20,
+          ),
+          Expanded(
+              child: Text(
+            productControllerMinuman.products[index].nama,
+            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+          )),
+          Expanded(
+            child: Text('${productControllerMinuman.products[index].harga}'),
+          ),
+          IconButton(
+              onPressed: () {
+                cartController.addProduk(productControllerMinuman.products[index]);
+              },
+              icon: Icon(
+                Icons.add_circle,
+              ))
+        ],
+      ),
+    );
+  }
+}

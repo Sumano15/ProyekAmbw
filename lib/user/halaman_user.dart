@@ -32,6 +32,10 @@ class _Halaman_userState extends State<Halaman_user> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
+        title: Text(
+          'No Meja / No Transaksi : 5 / A123 ',
+          style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.black),
+        ),
         backgroundColor: Color(0xFFF0BB62),
         elevation: 20,
         //title: const Text('GoogleNavBar'),

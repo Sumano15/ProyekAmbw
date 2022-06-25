@@ -67,11 +67,6 @@ class menu {
     );
   return product;
   }
-  
-//   static List<menu> products = [
-//   menu(nama: 'Mie Bakar', harga: '15000', gambar: 'https://cdn0-production-images-kly.akamaized.net/ZbmIfg2wSl77g2-IjkJpgPONAOM=/0x342:5989x3718/673x373/filters:quality(75):strip_icc():format(jpeg)/kly-media-production/medias/3930827/original/066100900_1644554867-shutterstock_1984582070.jpg'),
-//   menu(nama: 'Nasi Kuning', harga: '20000', gambar: 'https://www.resepistimewa.com/wp-content/uploads/nasi-kuning.jpg')
-// ];
 
 }
 

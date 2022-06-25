@@ -14,3 +14,13 @@ class ProductController extends GetxController {
   }
 
 }
+
+class ProductControllerMinuman extends GetxController {
+  final products = <menu>[].obs;
+
+  @override
+  void onInit() {
+    products.bindStream(FirestoreDB().getAllMinuman());
+    super.onInit();
+  }
+}
