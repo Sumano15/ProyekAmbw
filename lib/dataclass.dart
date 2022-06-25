@@ -71,9 +71,6 @@ class menu {
 }
 
 
-
-
-
 class transaksi {
   final menu dataMenu;
   final String jumlah;
@@ -98,4 +95,35 @@ class transaksi {
       total: json['total'],
     );
   }
+}
+
+class transaksiMenu {
+  final String nama;
+  final String harga;
+  final String gambar;
+  final String jumlah;
+
+  transaksiMenu({
+    required this.nama,
+    required this.harga,
+    required this.gambar,
+    required this.jumlah,
+  });
+
+  Map<String, dynamic> toJson() => {
+        'Nama': nama,
+        'Harga': harga,
+        'Gambar': gambar,
+        'Jumlah': jumlah,
+      };
+
+  factory transaksiMenu.fromJson(Map<String, dynamic> json) {
+    return transaksiMenu(
+      nama: json['Nama'],
+      harga: json['Harga'],
+      gambar: json['Gambar'],
+      jumlah: json['Jumlah'],
+    );
+  }
+
 }

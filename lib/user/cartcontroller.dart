@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 
 class CartController extends GetxController {
   var _products = {}.obs;
-  
+
   //final _products = {}.obs;
 
   void addProduk(menu product) {
@@ -27,14 +27,21 @@ class CartController extends GetxController {
 
   get products => _products;
 
+  // get productSubtotal => _products.entries
+  //     .map((product) => (product.key.harga * product.value))
+  //     .toList();
+
   get productSubtotal => _products.entries
-      .map((product) => (product.key.harga * product.value))
+      .map((product) => (product.key.harga as int) * (product.value as int))
       .toList();
 
   get total => _products.entries
-      .map((product) => (product.key.harga * product.value))
+      .map((product) => (product.key.harga as int) * (product.value as int))
       .toList()
       .reduce((value, element) => value + element)
       .toString();
+
+      
+
 
 }
