@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:ambwproyek/dataclass.dart';
-import 'package:ambwproyek/user/detailPembayaran.dart';
+import 'package:ambwproyek/user/detailMenu.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
@@ -17,6 +17,7 @@ class Halmenu extends StatefulWidget {
 }
 
 class _HalmenuState extends State<Halmenu> {
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

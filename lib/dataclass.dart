@@ -62,22 +62,24 @@ class menu {
 
 class transaksiMenu {
   final List<String> namaMenu;
-  final List<String> harga;
+  final List<int> harga;
   final List<String> gambar;
-  final List<String> jumlah;
-  final String noMeja;
-  final String noTransaksi;
-  final String status;
-  final String Uid;
+  final List<int> jumlah;
+  final List<bool> status_makanan;
+  late final String noMeja;
+  late final String noTransaksi;
+  late final String status_transaksi;
+  late final String Uid;
 
   transaksiMenu({
     required this.namaMenu,
     required this.harga,
     required this.gambar,
     required this.jumlah,
+    required this.status_makanan,
     required this.noMeja,
     required this.noTransaksi,
-    required this.status,
+    required this.status_transaksi,
     required this.Uid,
   });
 
@@ -86,9 +88,10 @@ class transaksiMenu {
         'Harga': harga,
         'Gambar': gambar,
         'Jumlah': jumlah,
+        'StatusMakanan': status_makanan,
         'NoMeja': noMeja,
         'NoTransaksi': noTransaksi,
-        'Status': status,
+        'StatusTransaksi': status_transaksi,
         'Uid': Uid,
       };
 
@@ -98,9 +101,10 @@ class transaksiMenu {
       harga: json['Harga'],
       gambar: json['Gambar'],
       jumlah: json['Jumlah'],
+      status_makanan:  json['Status Makanan'],
       noMeja: json['NoMeja'],
       noTransaksi: json['NoTransaksi'],
-      status: json['Status'],
+      status_transaksi: json['Status'],
       Uid: json['Uid'],
     );
   }
