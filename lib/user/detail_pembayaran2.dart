@@ -8,36 +8,8 @@ import 'package:flutter/src/widgets/framework.dart';
 
 import '../dataclass.dart';
 
-// class DetailPembayarand extends StatelessWidget {
-//   //const DetailPembayarand({Key? key}) : super(key: key);
-//   final menu dtMenu;
-//   final int jumlahQTY;
-//   const DetailPembayarand({
-//     Key? key,
-//     required this.dtMenu, required this.jumlahQTY
-//   }) : super(key: key);
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       body: SingleChildScrollView(
-//         child: Container(
-//           child: Column(
-//             children: [
-//               Text('hehe'),
-//             ],
-//           ),
-//         ),
-//       ),
-//     );
-//   }
-// }
-
 class DetailPembayarand extends StatefulWidget {
   const DetailPembayarand({Key? key}) : super(key: key);
-  // final transaksiMenu transaksimenuList;
-  // const DetailPembayarand({Key? key, required this.transaksimenuList})
-  //     : super(key: key);
 
   @override
   State<DetailPembayarand> createState() => _DetailPembayarandState();
@@ -63,8 +35,7 @@ class _DetailPembayarandState extends State<DetailPembayarand> {
                         DocumentSnapshot doc = snapshot.data!.docs[index];
                         return ListTile(
                           title: Text(doc['Nama']),
-                          subtitle:
-                              Text(doc['Harga']),
+                          subtitle: Text(doc['Harga']),
                           trailing: Wrap(
                             spacing: 10,
                             children: [

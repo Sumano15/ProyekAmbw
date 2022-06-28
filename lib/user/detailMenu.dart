@@ -8,110 +8,6 @@ import 'package:flutter/src/widgets/framework.dart';
 
 import 'detail_pembayaran2.dart';
 
-// class DetailMenu extends StatelessWidget {
-//   final menu dtMenu;
-//   const DetailMenu({
-//     Key? key,
-//     required this.dtMenu,
-//   }) : super(key: key);
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(
-//         title: Text(
-//           'Detail Menu',
-//           style: TextStyle(
-//               fontSize: 20, fontWeight: FontWeight.bold, color: Colors.black),
-//         ),
-//         backgroundColor: Color(0xFFF0BB62),
-//         elevation: 20,
-//         //title: const Text('GoogleNavBar'),
-//       ),
-//       body: SingleChildScrollView(
-//         child: SafeArea(
-//           child: Center(
-//             child: Container(
-//               child: Column(
-//                 mainAxisAlignment: MainAxisAlignment.center,
-//                 crossAxisAlignment: CrossAxisAlignment.center,
-//                 children: [
-//                   SizedBox(
-//                     height: 20,
-//                   ),
-//                   CircleAvatar(
-//                     radius: 100,
-//                     backgroundImage: NetworkImage(dtMenu.gambar),
-//                   ),
-//                   SizedBox(
-//                     height: 20,
-//                   ),
-//                   Text(dtMenu.nama,
-//                       style: TextStyle(
-//                           fontSize: 20,
-//                           fontWeight: FontWeight.bold,
-//                           color: Colors.black)),
-//                   SizedBox(
-//                     height: 10,
-//                   ),
-//                   Text('Rp  ${dtMenu.harga}',
-//                       style: TextStyle(
-//                           fontSize: 20,
-//                           //fontWeight: FontWeight.bold,
-//                           color: Colors.black)),
-//                   SizedBox(
-//                     height: 20,
-//                   ),
-//                   Row(
-//                     mainAxisAlignment: MainAxisAlignment.center,
-//                     crossAxisAlignment: CrossAxisAlignment.center,
-//                     children: [
-//                       ElevatedButton(
-//                         onPressed: () {
-//                         },
-//                         child: Icon(Icons.remove, color: Colors.white),
-//                         style: ElevatedButton.styleFrom(
-//                           shape: CircleBorder(),
-//                           padding: EdgeInsets.all(8),
-//                           primary: Color(0xFFF0BB62), // Button color
-//                           onPrimary: Colors.red, // Splash color
-//                         ),
-//                       ),
-//                       SizedBox(
-//                         width: 10,
-//                       ),
-//                       Text('0',
-//                           style: TextStyle(
-//                               fontSize: 20,
-//                               //fontWeight: FontWeight.bold,
-//                               color: Colors.black)),
-//                       SizedBox(
-//                         width: 10,
-//                       ),
-//                       ElevatedButton(
-//                         onPressed: () {
-
-//                         },
-//                         child: Icon(Icons.add, color: Colors.white),
-//                         style: ElevatedButton.styleFrom(
-//                           shape: CircleBorder(),
-//                           padding: EdgeInsets.all(8),
-//                           primary: Color(0xFFF0BB62), // Button color
-//                           onPrimary: Colors.red, // Splash color
-//                         ),
-//                       ),
-//                     ],
-//                   ),
-//                 ],
-//               ),
-//             ),
-//           ),
-//         ),
-//       ),
-//     );
-//   }
-// }
-
 class DetailMenu extends StatefulWidget {
   final menu dtMenu;
   const DetailMenu({
@@ -234,33 +130,21 @@ class _DetailMenuState extends State<DetailMenu> {
                   ElevatedButton(
                     onPressed: () {
                       final dtTransaksi = transaksiMenu(
-                        namaMenu: [widget.dtMenu.gambar],
-                        harga: [int.parse(widget.dtMenu.harga)],
-                        gambar: [widget.dtMenu.gambar], 
-                        jumlah: [_qty],
-                        status_makanan: [false],
-                        noMeja: '10', 
-                        noTransaksi: '1', 
-                        status_transaksi: 'belum bayar', 
-                        Uid: 'A123');
-                      // transaksimenuList.gambar.add(widget.dtMenu.gambar);
-                      // transaksimenuList.namaMenu.add(widget.dtMenu.nama);
-                      // transaksimenuList.harga
-                      //     .add(int.parse(widget.dtMenu.harga));
-                      // transaksimenuList.jumlah.add(_qty);
-                      // transaksimenuList.Uid = '445';
-                      // transaksimenuList.noMeja = '12';
-                      // transaksimenuList.noTransaksi = '2';
-                      // transaksimenuList.status_transaksi = 'belum selesai';
-                      // transaksimenuList.status_makanan.add(false);
+                          namaMenu: [widget.dtMenu.gambar],
+                          harga: [int.parse(widget.dtMenu.harga)],
+                          gambar: [widget.dtMenu.gambar],
+                          jumlah: [_qty],
+                          status_makanan: [false],
+                          noMeja: '10',
+                          status_transaksi: 'belum bayar',
+                          Uid: 'A123');
                       Navigator.push(
                         context,
                         MaterialPageRoute(
                             builder: (context) => DetailPembayarand(
-                                  //transaksimenuList: dtTransaksi,
+                                //transaksimenuList: dtTransaksi,
                                 )),
                       );
-                      DatabaseTransaksi.addData(data_transaksi: dtTransaksi);
                     },
                     child: Text(
                       'Add',
