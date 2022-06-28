@@ -137,7 +137,7 @@ class _DetailMenuState extends State<DetailMenu> {
                           status_makanan: [false],
                           noMeja: '10',
                           status_transaksi: 'belum bayar',
-                          Uid: 'A123');
+                          Uid: '5');
                       Navigator.push(
                         context,
                         MaterialPageRoute(
@@ -145,6 +145,7 @@ class _DetailMenuState extends State<DetailMenu> {
                                 //transaksimenuList: dtTransaksi,
                                 )),
                       );
+                      //DatabaseTransaksi.updateData(data_transaksi: dtTransaksi, id: );
                     },
                     child: Text(
                       'Add',

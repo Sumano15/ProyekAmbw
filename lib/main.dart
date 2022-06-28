@@ -1,6 +1,7 @@
 import 'package:ambwproyek/firebase_options.dart';
 import 'package:ambwproyek/login.dart';
 import 'package:ambwproyek/user/halaman_user.dart';
+import 'package:ambwproyek/user/home.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -34,6 +35,6 @@ class MyApp extends StatelessWidget {
           // is not restarted.
           primarySwatch: Colors.blue,
         ),
-        home: const Halaman_user());
+        home: const LogInScreen());
   }
 }

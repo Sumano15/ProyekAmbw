@@ -53,10 +53,11 @@ class _LogInScreenState extends State<LogInScreen> {
 
       if (user != null) {
         if (result.data()!['role'] == 'user') {
+          String sendUID = result.id.toString();
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => UserHome(),
+              builder: (context) => UserHome(passUID: sendUID),
               //resultdata nya di pasing buat catat di transaksi
             ),
           );

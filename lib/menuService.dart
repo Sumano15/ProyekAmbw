@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:ambwproyek/dataclass.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
@@ -81,6 +83,21 @@ class DatabaseMinuman {
   }
 }
 
+
+
+// void main() async {
+//   print(getRandomString(3)); //ynAIrUMKfk
+// }
+
+String getRandomString(int length) {
+  const characters =
+      'AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz1234567890';
+  Random random = Random();
+  return String.fromCharCodes(Iterable.generate(
+      length, (_) => characters.codeUnitAt(random.nextInt(characters.length))));
+}
+
+
 //Transaksi
 
 CollectionReference tblTransaksi =
@@ -101,6 +118,7 @@ class DatabaseTransaksi {
         )
         .catchError((e) => print(e.toString()));
   }
+  
 
   static Future<void> deleteData({required String id}) async {
     DocumentReference docRef = tblTransaksi.doc(id);
@@ -113,7 +131,7 @@ class DatabaseTransaksi {
   }
 
   static Future<void> addData({required transaksiMenu data_transaksi}) async {
-    DocumentReference docRef = tblTransaksi.doc();
+    DocumentReference docRef = tblTransaksi.doc(getRandomString(4));
     await docRef
         .set(data_transaksi.toJson())
         .whenComplete(
@@ -121,4 +139,6 @@ class DatabaseTransaksi {
         )
         .catchError((e) => print(e.toString()));
   }
+
+  
 }
