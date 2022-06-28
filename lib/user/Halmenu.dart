@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:ambwproyek/dataclass.dart';
 import 'package:ambwproyek/user/detailPembayaran.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -38,35 +40,33 @@ class _HalmenuState extends State<Halmenu> {
                       itemBuilder: (context, index) {
                         DocumentSnapshot doc = snapshot.data!.docs[index];
                         return ListTile(
-                            title: Text(doc['Nama']),
-                            subtitle: Text(doc['Harga']),
-                            leading: ConstrainedBox(
-                              constraints: BoxConstraints(
-                                minWidth: 100,
-                                minHeight: 100,
-                                maxWidth: 200,
-                                maxHeight: 200,
-                              ),
-                              child: Image.network(
-                                doc['Gambar'],
-                                fit: BoxFit.cover,
-                              ),
+                          title: Text(doc['Nama']),
+                          subtitle: Text(doc['Harga']),
+                          leading: ConstrainedBox(
+                            constraints: BoxConstraints(
+                              minWidth: 100,
+                              minHeight: 100,
+                              maxWidth: 200,
+                              maxHeight: 200,
                             ),
-                            trailing: Wrap(
-                              children: [
-                                IconButton(
-                                  icon: Icon(Icons.remove_circle),
-                                  onPressed: () {},
-                                ),
-                                Container(
-                                    margin: EdgeInsets.only(top: 12),
-                                    child: Text("0")),
-                                IconButton(
-                                  icon: Icon(Icons.add_circle),
-                                  onPressed: () {},
-                                ),
-                              ],
-                            ));
+                            child: Image.network(
+                              doc['Gambar'],
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                          onTap: () {
+                            final menu dt = menu(
+                                gambar: doc['Gambar'],
+                                nama: doc['Nama'],
+                                harga: doc['Harga']);
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => DetailMenu(dtMenu: dt),
+                              ),
+                            );
+                          },
+                        );
                       },
                     );
                   }
