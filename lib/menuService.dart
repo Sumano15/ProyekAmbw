@@ -97,7 +97,6 @@ String getRandomString(int length) {
       length, (_) => characters.codeUnitAt(random.nextInt(characters.length))));
 }
 
-
 //Transaksi
 
 CollectionReference tblTransaksi =
@@ -108,11 +107,20 @@ class DatabaseTransaksi {
     return tblTransaksi.snapshots();
   }
 
+  static Stream<DocumentSnapshot<Object?>> getNama() {
+    return tblTransaksi.doc('nama').snapshots();
+  }
+
   static Future<void> updateData(
-      {required transaksiMenu data_transaksi, required String id}) async {
+      {required String nama, 
+      required int harga, 
+      required String gambar, 
+      required int jumlah, 
+      required bool statusMakanan,
+      required String id}) async {
     DocumentReference docRef = tblTransaksi.doc(id);
     await docRef
-        .update(data_transaksi.toJson())
+        .update({'Nama': nama, 'Harga': harga, 'Gambar': gambar, 'Jumlah': jumlah, 'StatusMakanan': statusMakanan})
         .whenComplete(
           () => print("{$id}Data berhasil diubah"),
         )

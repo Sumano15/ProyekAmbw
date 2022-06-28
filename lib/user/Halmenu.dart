@@ -63,7 +63,7 @@ class _HalmenuState extends State<Halmenu> {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => DetailMenu(dtMenu: dt),
+                                builder: (context) => DetailMenu(dtMenu: dt, docID: doc.id,),
                               ),
                             );
                           },
@@ -120,7 +120,7 @@ class _HalmenuState extends State<Halmenu> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => DetailMenu(dtMenu: dt),
+                              builder: (context) => DetailMenu(dtMenu: dt, docID: doc.id,),
                             ),
                           );
                         },
