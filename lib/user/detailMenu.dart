@@ -234,15 +234,15 @@ class _DetailMenuState extends State<DetailMenu> {
                   ElevatedButton(
                     onPressed: () {
                       final dtTransaksi = transaksiMenu(
-                        namaMenu: transaksimenuList.namaMenu.toList(),
-                        harga: transaksimenuList.harga.toList(),
-                        gambar: transaksimenuList.gambar.toList(), 
-                        jumlah: transaksimenuList.jumlah.toList(), 
-                        status_makanan: transaksimenuList.status_makanan.toList(),
-                        noMeja: transaksimenuList.noMeja.toString(), 
-                        noTransaksi: transaksimenuList.noTransaksi.toString(), 
-                        status_transaksi: transaksimenuList.status_transaksi.toString(), 
-                        Uid: transaksimenuList.Uid.toString());
+                        namaMenu: [widget.dtMenu.gambar],
+                        harga: [int.parse(widget.dtMenu.harga)],
+                        gambar: [widget.dtMenu.gambar], 
+                        jumlah: [_qty],
+                        status_makanan: [false],
+                        noMeja: '10', 
+                        noTransaksi: '1', 
+                        status_transaksi: 'belum bayar', 
+                        Uid: 'A123');
                       // transaksimenuList.gambar.add(widget.dtMenu.gambar);
                       // transaksimenuList.namaMenu.add(widget.dtMenu.nama);
                       // transaksimenuList.harga
@@ -257,7 +257,7 @@ class _DetailMenuState extends State<DetailMenu> {
                         context,
                         MaterialPageRoute(
                             builder: (context) => DetailPembayarand(
-                                  transaksimenuList: dtTransaksi,
+                                  //transaksimenuList: dtTransaksi,
                                 )),
                       );
                       DatabaseTransaksi.addData(data_transaksi: dtTransaksi);

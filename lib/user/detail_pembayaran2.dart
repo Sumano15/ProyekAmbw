@@ -34,10 +34,10 @@ import '../dataclass.dart';
 // }
 
 class DetailPembayarand extends StatefulWidget {
-  //const DetailPembayarand({Key? key}) : super(key: key);
-  final transaksiMenu transaksimenuList;
-  const DetailPembayarand({Key? key, required this.transaksimenuList})
-      : super(key: key);
+  const DetailPembayarand({Key? key}) : super(key: key);
+  // final transaksiMenu transaksimenuList;
+  // const DetailPembayarand({Key? key, required this.transaksimenuList})
+  //     : super(key: key);
 
   @override
   State<DetailPembayarand> createState() => _DetailPembayarandState();

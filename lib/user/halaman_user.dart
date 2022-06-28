@@ -22,7 +22,7 @@ class _Halaman_userState extends State<Halaman_user> {
       TextStyle(fontSize: 30, fontWeight: FontWeight.w600);
   static const List<Widget> _Page = [
     Halmenu(),
-    //DetailPembayarand(),
+    DetailPembayarand(),
   ];
 
   @override
