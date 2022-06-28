@@ -1,6 +1,5 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
 
-import 'package:ambwproyek/user/cartcontroller.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
@@ -25,7 +24,7 @@ class _MenuState extends State<Menu> with TickerProviderStateMixin {
   int jumMenu = 0;
   @override
   Widget build(BuildContext context) {
-    TabController tabController = TabController(length: 2, vsync: this);
+    TabController tabController = TabController(length: 1, vsync: this);
     return Scaffold(
       body: Column(
         children: [
@@ -62,11 +61,6 @@ class _MenuState extends State<Menu> with TickerProviderStateMixin {
                     child: Align(
                         alignment: Alignment.center,
                         child: Icon(Icons.rice_bowl, color: Colors.black)),
-                  ),
-                  Tab(
-                    child: Align(
-                        alignment: Alignment.center,
-                        child: Icon(Icons.coffee, color: Colors.black)),
                   ),
                 ],
               ),
@@ -109,7 +103,6 @@ class _MenuState extends State<Menu> with TickerProviderStateMixin {
                         itemCount: snapshot.data!.docs.length,
                         itemBuilder: (context, index) {
                           DocumentSnapshot doc = snapshot.data!.docs[index];
-
                           return ListTile(
                             title: Text(doc['Nama']),
                             subtitle: Text(doc['Harga']),

@@ -2,9 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 
-import 'cartProduk.dart';
-import 'cartTotal.dart';
-
 class DetailPembayarand extends StatelessWidget {
   const DetailPembayarand({Key? key}) : super(key: key);
 
@@ -15,8 +12,9 @@ class DetailPembayarand extends StatelessWidget {
         child: Container(
           child: Column(
             children: [
-              CartProduk(),
-              CartTotal(),
+              Text('hehe'),
+              //CartProduk(),
+              //CartTotal(),
             ],
           ),
         ),

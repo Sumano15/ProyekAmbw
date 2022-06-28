@@ -1,13 +1,13 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
 
-import 'package:ambwproyek/user/catProduk.dart';
 import 'package:ambwproyek/user/detail_pembayaran2.dart';
-import 'package:ambwproyek/user/halaman_menu.dart';
 import 'package:ambwproyek/user/menu.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
+
+import 'Halmenu.dart';
 
 class Halaman_user extends StatefulWidget {
   const Halaman_user({Key? key}) : super(key: key);
@@ -21,10 +21,8 @@ class _Halaman_userState extends State<Halaman_user> {
   static const TextStyle optionStyle =
       TextStyle(fontSize: 30, fontWeight: FontWeight.w600);
   static const List<Widget> _Page = [
-    //Menu(),
-    HalamanMenu(),
+    Halmenu(),
     DetailPembayarand(),
-    //CatProduk(),
   ];
 
   @override
@@ -34,7 +32,8 @@ class _Halaman_userState extends State<Halaman_user> {
       appBar: AppBar(
         title: Text(
           'No Meja / No Transaksi : 5 / A123 ',
-          style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.black),
+          style: TextStyle(
+              fontSize: 20, fontWeight: FontWeight.bold, color: Colors.black),
         ),
         backgroundColor: Color(0xFFF0BB62),
         elevation: 20,

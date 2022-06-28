@@ -58,72 +58,50 @@ class menu {
       gambar: json['Gambar'],
     );
   }
-  
-  static menu fromSnapshot(DocumentSnapshot snap) {
-    menu product = menu(
-      nama: snap['Nama'],
-      harga: snap['Harga'],
-      gambar: snap['Gambar'],
-    );
-  return product;
-  }
-
-}
-
-
-class transaksi {
-  final menu dataMenu;
-  final String jumlah;
-  final String total;
-
-  transaksi({
-    required this.dataMenu,
-    required this.jumlah,
-    required this.total,
-  });
-
-  Map<String, dynamic> toJson() => {
-        'dataMenu': dataMenu.toJson(),
-        'jumlah': jumlah,
-        'total': total,
-      };
-
-  factory transaksi.fromJson(Map<String, dynamic> json) {
-    return transaksi(
-      dataMenu: menu.fromJson(json['dataMenu']),
-      jumlah: json['jumlah'],
-      total: json['total'],
-    );
-  }
 }
 
 class transaksiMenu {
-  final String nama;
-  final String harga;
-  final String gambar;
-  final String jumlah;
+  final List<String> namaMenu;
+  final List<String> harga;
+  final List<String> gambar;
+  final List<String> jumlah;
+  final String noMeja;
+  final String noTransaksi;
+  final String status;
+  final String Uid;
 
   transaksiMenu({
-    required this.nama,
+    required this.namaMenu,
     required this.harga,
     required this.gambar,
     required this.jumlah,
+    required this.noMeja,
+    required this.noTransaksi,
+    required this.status,
+    required this.Uid,
   });
 
   Map<String, dynamic> toJson() => {
-        'Nama': nama,
+        'Nama': namaMenu,
         'Harga': harga,
         'Gambar': gambar,
         'Jumlah': jumlah,
+        'NoMeja': noMeja,
+        'NoTransaksi': noTransaksi,
+        'Status': status,
+        'Uid': Uid,
       };
 
   factory transaksiMenu.fromJson(Map<String, dynamic> json) {
     return transaksiMenu(
-      nama: json['Nama'],
+      namaMenu: json['Nama'],
       harga: json['Harga'],
       gambar: json['Gambar'],
       jumlah: json['Jumlah'],
+      noMeja: json['NoMeja'],
+      noTransaksi: json['NoTransaksi'],
+      status: json['Status'],
+      Uid: json['Uid'],
     );
   }
-
 }
