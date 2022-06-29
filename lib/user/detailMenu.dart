@@ -1,43 +1,37 @@
-// ignore_for_file: prefer_const_constructors
-
-import 'package:ambwproyek/dataclass.dart';
-import 'package:ambwproyek/menuService.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 
-import 'detail_pembayaran2.dart';
+import '../dataclass.dart';
+import '../menuService.dart';
 
-class DetailMenu extends StatefulWidget {
-  final String rndmID;
-  final String docID;
-  final menu dtMenu;
-  const DetailMenu(
+class detailMenu extends StatefulWidget {
+  final String rndmId;
+  final menu dtmenu;
+  final int jmlh;
+  const detailMenu(
       {Key? key,
-      required this.rndmID,
-      required this.dtMenu,
-      required this.docID})
+      required this.rndmId,
+      required this.dtmenu,
+      required this.jmlh})
       : super(key: key);
 
   @override
-  State<DetailMenu> createState() => _DetailMenuState();
+  State<detailMenu> createState() => _detailMenuState();
 }
 
-class _DetailMenuState extends State<DetailMenu> {
-  late transaksiMenu transaksimenuList;
+class _detailMenuState extends State<detailMenu> {
+  int _qty = 0;
 
-  int _qty = 1;
-
-  void add() {
-    setState(() {
-      _qty += 1;
-    });
-  }
-
-  void remove() {
-    setState(() {
-      if (_qty > 1) _qty -= 1;
-    });
+  @override
+  void initState() {
+    if (widget.jmlh != null) {
+      _qty = widget.jmlh;
+    } else {
+      _qty = 0;
+    }
+    super.initState();
   }
 
   @override
@@ -51,7 +45,6 @@ class _DetailMenuState extends State<DetailMenu> {
         ),
         backgroundColor: Color(0xFFF0BB62),
         elevation: 20,
-        //title: const Text('GoogleNavBar'),
       ),
       body: SingleChildScrollView(
         child: SafeArea(
@@ -66,12 +59,12 @@ class _DetailMenuState extends State<DetailMenu> {
                   ),
                   CircleAvatar(
                     radius: 100,
-                    backgroundImage: NetworkImage(widget.dtMenu.gambar),
+                    backgroundImage: NetworkImage(widget.dtmenu.gambar),
                   ),
                   SizedBox(
                     height: 20,
                   ),
-                  Text(widget.dtMenu.nama,
+                  Text(widget.dtmenu.nama,
                       style: TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
@@ -79,7 +72,7 @@ class _DetailMenuState extends State<DetailMenu> {
                   SizedBox(
                     height: 10,
                   ),
-                  Text('Rp  ${widget.dtMenu.harga}',
+                  Text('Rp  ${widget.dtmenu.harga}',
                       style: TextStyle(
                           fontSize: 20,
                           //fontWeight: FontWeight.bold,
@@ -93,7 +86,11 @@ class _DetailMenuState extends State<DetailMenu> {
                     children: [
                       ElevatedButton(
                         onPressed: () {
-                          remove();
+                          setState(() {
+                            if (_qty > 0) {
+                              _qty--;
+                            }
+                          });
                         },
                         child: Icon(Icons.remove, color: Colors.white),
                         style: ElevatedButton.styleFrom(
@@ -107,16 +104,15 @@ class _DetailMenuState extends State<DetailMenu> {
                         width: 10,
                       ),
                       Text('${_qty}',
-                          style: TextStyle(
-                              fontSize: 20,
-                              //fontWeight: FontWeight.bold,
-                              color: Colors.black)),
+                          style: TextStyle(fontSize: 20, color: Colors.black)),
                       SizedBox(
                         width: 10,
                       ),
                       ElevatedButton(
                         onPressed: () {
-                          add();
+                          setState(() {
+                            _qty++;
+                          });
                         },
                         child: Icon(Icons.add, color: Colors.white),
                         style: ElevatedButton.styleFrom(
@@ -133,24 +129,19 @@ class _DetailMenuState extends State<DetailMenu> {
                   ),
                   ElevatedButton(
                     onPressed: () {
-                      DatabaseTransaksi.updateData(
-                          nama: widget.dtMenu.nama,
-                          harga: int.parse(widget.dtMenu.harga),
-                          gambar: widget.dtMenu.gambar,
-                          jumlah: _qty,
-                          statusMakanan: false,
-                          id: widget.rndmID);
-                      // if(DatabaseTransaksi.getData().Nama) {
-
-                      // }
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => DetailPembayarand(
-                                  rndmID: widget.rndmID,
-                                )),
-                      );
-                      //DatabaseTransaksi.updateData(data_transaksi: dtTransaksi, id: );
+                      if (_qty <= 0) {
+                        SnackBar(
+                          content: Text('Pilih jumlah menu terlebih dahulu'),
+                          backgroundColor: Colors.red,
+                        );
+                      } else {
+                        DatabaseTransaksi.addMenu(
+                            NamaMenu: widget.dtmenu.nama,
+                            Harga: int.parse(widget.dtmenu.harga),
+                            Jumlah: _qty,
+                            RandId: widget.rndmId,
+                            gambar: widget.dtmenu.gambar);
+                      }
                     },
                     child: Text(
                       'Add',

@@ -1,7 +1,7 @@
 import 'package:ambwproyek/admin/home.dart';
 import 'package:ambwproyek/dapur/home.dart';
 import 'package:ambwproyek/siginin.dart';
-import 'package:ambwproyek/user/home.dart';
+import 'package:ambwproyek/user/inputNoMeja.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -53,11 +53,11 @@ class _LogInScreenState extends State<LogInScreen> {
 
       if (user != null) {
         if (result.data()!['role'] == 'user') {
-          String sendUID = result.id.toString();
+          String UID = result.id.toString();
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => UserHome(passUID: sendUID),
+              builder: (context) => inputNoMeja(uid: UID),
               //resultdata nya di pasing buat catat di transaksi
             ),
           );

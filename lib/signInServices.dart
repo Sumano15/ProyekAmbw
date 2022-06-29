@@ -9,6 +9,10 @@ class DataAkun {
     return akunRef.snapshots();
   }
 
+  static Stream<QuerySnapshot> getDataByID(String id) {
+    return akunRef.where('id', isEqualTo: id).snapshots();
+  }
+
   static Future<void> addData({required akun data, required String id}) async {
     DocumentReference docRef = akunRef.doc(id);
 

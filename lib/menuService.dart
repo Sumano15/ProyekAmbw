@@ -93,54 +93,35 @@ CollectionReference tblTransaksi =
     FirebaseFirestore.instance.collection('transaksiMenu');
 
 class DatabaseTransaksi {
-  static Stream<QuerySnapshot> getData() {
-    return tblTransaksi.snapshots();
+  static Stream<QuerySnapshot> getDataMenu(String id) {
+    return tblTransaksi.doc(id).collection('menu').snapshots();
   }
 
-  static Stream<QuerySnapshot> getDataByID({required String id}) {
-    return tblTransaksi.where('id', isEqualTo: id).snapshots();
-  }
-
-  static Future<void> updateData(
-      {required String nama,
-      required int harga,
-      required String gambar,
-      required int jumlah,
-      required bool statusMakanan,
-      required String id}) async {
-    DocumentReference docRef = tblTransaksi.doc(id);
-    await docRef
-        .update({
-          'Nama': FieldValue.arrayUnion([nama]),
-          'Harga': FieldValue.arrayUnion([harga]),
-          'Gambar': FieldValue.arrayUnion([gambar]),
-          'Jumlah': FieldValue.arrayUnion([jumlah]),
-          'StatusMakanan': FieldValue.arrayUnion([statusMakanan]),
-        })
-        .whenComplete(
-          () => print("{$id}Data berhasil diubah"),
-        )
-        .catchError((e) => print(e.toString()));
-  }
-
-  static Future<void> deleteData({required String id}) async {
-    DocumentReference docRef = tblTransaksi.doc(id);
-    await docRef
-        .delete()
-        .whenComplete(
-          () => print("Data berhasil dihapus"),
-        )
-        .catchError((e) => print(e.toString()));
-  }
-
-  static Future<void> addData(
-      {required transaksiMenu data_transaksi, required String docId}) async {
+  static Future<void> addDocument(
+      {required String docId,
+      required String noMeja,
+      required String uid}) async {
     DocumentReference docRef = tblTransaksi.doc(docId);
-    await docRef
-        .set(data_transaksi.toJson())
-        .whenComplete(
-          () => print("Data berhasil ditambahkan"),
-        )
-        .catchError((e) => print(e.toString()));
+    await docRef.set({
+      'id': docId,
+      'NoMeja': noMeja,
+      'UID': uid,
+    });
+  }
+
+  static Future<void> addMenu({
+    required String NamaMenu,
+    required int Harga,
+    required int Jumlah,
+    required String gambar,
+    required String RandId,
+  }) {
+    DocumentReference docRef =
+        tblTransaksi.doc(RandId).collection('menu').doc(NamaMenu);
+    return docRef.set({
+      'Harga': Harga,
+      'Jumlah': Jumlah,
+      'Gambar': gambar,
+    });
   }
 }

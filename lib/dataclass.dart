@@ -62,48 +62,25 @@ class menu {
   }
 }
 
-class transaksiMenu {
-  final List<String> namaMenu;
-  final List<int> harga;
-  final List<String> gambar;
-  final List<int> jumlah;
-  final List<bool> status_makanan;
-  late final String noMeja;
-  late final String status_transaksi;
-  late final String Uid;
+class detData {
+  final int? Jumlah;
+  final int? Harga;
 
-  transaksiMenu({
-    required this.namaMenu,
-    required this.harga,
-    required this.gambar,
-    required this.jumlah,
-    required this.status_makanan,
-    required this.noMeja,
-    required this.status_transaksi,
-    required this.Uid,
-  });
+  detData({this.Jumlah, this.Harga});
 
-  Map<String, dynamic> toJson() => {
-        'Nama': namaMenu,
-        'Harga': harga,
-        'Gambar': gambar,
-        'Jumlah': jumlah,
-        'StatusMakanan': status_makanan,
-        'NoMeja': noMeja,
-        'StatusTransaksi': status_transaksi,
-        'Uid': Uid,
-      };
-
-  factory transaksiMenu.fromJson(Map<String, dynamic> json) {
-    return transaksiMenu(
-      namaMenu: json['Nama'],
-      harga: json['Harga'],
-      gambar: json['Gambar'],
-      jumlah: json['Jumlah'],
-      status_makanan: json['Status Makanan'],
-      noMeja: json['NoMeja'],
-      status_transaksi: json['Status'],
-      Uid: json['Uid'],
+  factory detData.fromFirestore(
+    DocumentSnapshot<Map<String, dynamic>> sshot,
+    SnapshotOptions? options,
+  ) {
+    final data = sshot.data();
+    return detData(
+      Jumlah: data?['Jumlah'] as int,
+      Harga: data?['Harga'] as int,
     );
   }
+
+  Map<String, dynamic> ToFirestore() => {
+        'Jumlah': Jumlah,
+        'Harga': Harga,
+      };
 }
