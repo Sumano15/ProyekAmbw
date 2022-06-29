@@ -58,10 +58,11 @@ class _halamanMenuState extends State<halamanMenu> {
         appBar: AppBar(
           backgroundColor: Color(0xFFF0BB62),
           title: Text(
-              'No Meja / Kode Transaksi : ${widget.noMeja} / ${widget.rndmid}', style: TextStyle(
-                color: Colors.black,
-                fontSize: 20,
-                fontWeight: FontWeight.bold)),
+              'No Meja / Kode Transaksi : ${widget.noMeja} / ${widget.rndmid}',
+              style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold)),
         ),
         body: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -77,10 +78,19 @@ class _halamanMenuState extends State<halamanMenu> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
+                  Text("<- ",
+                      style:
+                          TextStyle(fontSize: 25, fontWeight: FontWeight.bold)),
                   Text("Makanan",
-                      style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold)),
-                      SizedBox(width: 10,),
+                      style:
+                          TextStyle(fontSize: 25, fontWeight: FontWeight.bold)),
+                  SizedBox(
+                    width: 10,
+                  ),
                   Icon(Icons.rice_bowl, size: 26, color: Colors.black),
+                  Text(" ->",
+                      style:
+                          TextStyle(fontSize: 25, fontWeight: FontWeight.bold)),
                 ],
               ),
             ),
@@ -155,6 +165,9 @@ class _halamanMenuState extends State<halamanMenu> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
+                  Text("<- ",
+                      style:
+                          TextStyle(fontSize: 25, fontWeight: FontWeight.bold)),
                   Text("Minuman",
                       style:
                           TextStyle(fontSize: 25, fontWeight: FontWeight.bold)),
@@ -162,6 +175,9 @@ class _halamanMenuState extends State<halamanMenu> {
                     width: 10,
                   ),
                   Icon(Icons.coffee, size: 26, color: Colors.black),
+                  Text(" ->",
+                      style:
+                          TextStyle(fontSize: 25, fontWeight: FontWeight.bold)),
                 ],
               ),
             ),
