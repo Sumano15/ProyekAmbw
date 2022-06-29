@@ -83,19 +83,9 @@ class DatabaseMinuman {
   }
 }
 
-
-
 // void main() async {
 //   print(getRandomString(3)); //ynAIrUMKfk
 // }
-
-String getRandomString(int length) {
-  const characters =
-      'AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz1234567890';
-  Random random = Random();
-  return String.fromCharCodes(Iterable.generate(
-      length, (_) => characters.codeUnitAt(random.nextInt(characters.length))));
-}
 
 //Transaksi
 
@@ -107,26 +97,31 @@ class DatabaseTransaksi {
     return tblTransaksi.snapshots();
   }
 
-  static Stream<DocumentSnapshot<Object?>> getNama() {
-    return tblTransaksi.doc('nama').snapshots();
+  static Stream<QuerySnapshot> getDataByID({required String id}) {
+    return tblTransaksi.where('id', isEqualTo: id).snapshots();
   }
 
   static Future<void> updateData(
-      {required String nama, 
-      required int harga, 
-      required String gambar, 
-      required int jumlah, 
+      {required String nama,
+      required int harga,
+      required String gambar,
+      required int jumlah,
       required bool statusMakanan,
       required String id}) async {
     DocumentReference docRef = tblTransaksi.doc(id);
     await docRef
-        .update({'Nama': nama, 'Harga': harga, 'Gambar': gambar, 'Jumlah': jumlah, 'StatusMakanan': statusMakanan})
+        .update({
+          'Nama': FieldValue.arrayUnion([nama]),
+          'Harga': FieldValue.arrayUnion([harga]),
+          'Gambar': FieldValue.arrayUnion([gambar]),
+          'Jumlah': FieldValue.arrayUnion([jumlah]),
+          'StatusMakanan': FieldValue.arrayUnion([statusMakanan]),
+        })
         .whenComplete(
           () => print("{$id}Data berhasil diubah"),
         )
         .catchError((e) => print(e.toString()));
   }
-  
 
   static Future<void> deleteData({required String id}) async {
     DocumentReference docRef = tblTransaksi.doc(id);
@@ -138,8 +133,9 @@ class DatabaseTransaksi {
         .catchError((e) => print(e.toString()));
   }
 
-  static Future<void> addData({required transaksiMenu data_transaksi}) async {
-    DocumentReference docRef = tblTransaksi.doc(getRandomString(4));
+  static Future<void> addData(
+      {required transaksiMenu data_transaksi, required String docId}) async {
+    DocumentReference docRef = tblTransaksi.doc(docId);
     await docRef
         .set(data_transaksi.toJson())
         .whenComplete(
@@ -147,6 +143,4 @@ class DatabaseTransaksi {
         )
         .catchError((e) => print(e.toString()));
   }
-
-  
 }

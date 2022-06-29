@@ -9,8 +9,9 @@ import 'package:flutter/src/widgets/framework.dart';
 import '../dataclass.dart';
 
 class DetailPembayarand extends StatefulWidget {
-  const DetailPembayarand({Key? key}) : super(key: key);
-
+  final String rndmID;
+  const DetailPembayarand({Key? key, required this.rndmID}) : super(key: key);
+// doc id di pasing ke sini terus di buat get data per id
   @override
   State<DetailPembayarand> createState() => _DetailPembayarandState();
 }
@@ -24,7 +25,7 @@ class _DetailPembayarandState extends State<DetailPembayarand> {
           Container(
             child: Expanded(
               child: StreamBuilder<QuerySnapshot>(
-                stream: DatabaseTransaksi.getData(),
+                stream: DatabaseTransaksi.getDataByID(id: widget.rndmID),
                 builder: (context, snapshot) {
                   if (snapshot.hasError) {
                     return Text('Error: ${snapshot.error}');
@@ -35,7 +36,7 @@ class _DetailPembayarandState extends State<DetailPembayarand> {
                         DocumentSnapshot doc = snapshot.data!.docs[index];
                         return ListTile(
                           title: Text(doc['Nama']),
-                          subtitle: Text(doc['Harga']),
+                          subtitle: Text(doc['Harga'].toString()),
                           trailing: Wrap(
                             spacing: 10,
                             children: [
@@ -48,7 +49,7 @@ class _DetailPembayarandState extends State<DetailPembayarand> {
                                   icon: Icon(Icons.remove)),
                               Container(
                                   padding: EdgeInsets.only(top: 16),
-                                  child: Text(doc['Jumlah'])),
+                                  child: Text(doc['Jumlah'][0].toString())),
                               IconButton(
                                   onPressed: () {
                                     //if (qty > 1) qty -= 1;
@@ -64,7 +65,7 @@ class _DetailPembayarandState extends State<DetailPembayarand> {
                               maxHeight: 200,
                             ),
                             child: Image.network(
-                              doc['Gambar'],
+                              doc['Gambar'][0],
                               fit: BoxFit.cover,
                             ),
                           ),

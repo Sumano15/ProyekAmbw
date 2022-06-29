@@ -10,7 +10,8 @@ import 'package:google_nav_bar/google_nav_bar.dart';
 import 'Halmenu.dart';
 
 class Halaman_user extends StatefulWidget {
-  const Halaman_user({Key? key}) : super(key: key);
+  final String rndmID;
+  const Halaman_user({Key? key, required this.rndmID}) : super(key: key);
 
   @override
   State<Halaman_user> createState() => _Halaman_userState();
@@ -21,8 +22,12 @@ class _Halaman_userState extends State<Halaman_user> {
   static const TextStyle optionStyle =
       TextStyle(fontSize: 30, fontWeight: FontWeight.w600);
   static const List<Widget> _Page = [
-    Halmenu(),
-    DetailPembayarand(),
+    Halmenu(
+      rndmID: '',
+    ),
+    DetailPembayarand(
+      rndmID: '7BGS',
+    ),
   ];
 
   @override

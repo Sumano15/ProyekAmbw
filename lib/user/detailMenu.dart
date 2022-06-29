@@ -9,12 +9,15 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'detail_pembayaran2.dart';
 
 class DetailMenu extends StatefulWidget {
+  final String rndmID;
   final String docID;
   final menu dtMenu;
-  const DetailMenu({
-    Key? key,
-    required this.dtMenu, required this.docID
-  }) : super(key: key);
+  const DetailMenu(
+      {Key? key,
+      required this.rndmID,
+      required this.dtMenu,
+      required this.docID})
+      : super(key: key);
 
   @override
   State<DetailMenu> createState() => _DetailMenuState();
@@ -130,7 +133,13 @@ class _DetailMenuState extends State<DetailMenu> {
                   ),
                   ElevatedButton(
                     onPressed: () {
-                      print(DatabaseTransaksi.getNama().toString());
+                      DatabaseTransaksi.updateData(
+                          nama: widget.dtMenu.nama,
+                          harga: int.parse(widget.dtMenu.harga),
+                          gambar: widget.dtMenu.gambar,
+                          jumlah: _qty,
+                          statusMakanan: false,
+                          id: widget.rndmID);
                       // if(DatabaseTransaksi.getData().Nama) {
 
                       // }
@@ -138,9 +147,7 @@ class _DetailMenuState extends State<DetailMenu> {
                         context,
                         MaterialPageRoute(
                             builder: (context) => DetailPembayarand(
-                                  // docID: widget.docID,
-                                  // dtMenu: widget.dtMenu,
-                                  // qty: _qty,
+                                  rndmID: widget.rndmID,
                                 )),
                       );
                       //DatabaseTransaksi.updateData(data_transaksi: dtTransaksi, id: );

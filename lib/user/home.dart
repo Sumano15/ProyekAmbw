@@ -1,5 +1,7 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, empty_statements
 
+import 'dart:math';
+
 import 'package:ambwproyek/user/halaman_user.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -127,6 +129,13 @@ class _UserHomeState extends State<UserHome> {
 
   final _noMejaController = TextEditingController();
 
+  String getRandomString(int length) {
+    const characters =
+        'AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz1234567890';
+    Random random = Random();
+    return String.fromCharCodes(Iterable.generate(length,
+        (_) => characters.codeUnitAt(random.nextInt(characters.length))));
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -187,25 +196,32 @@ class _UserHomeState extends State<UserHome> {
                       //   MaterialPageRoute(
                       //       builder: (context) => const Halaman_user()),
                       // );
-                      {
-                        final dtTransaksi = transaksiMenu(
-                            namaMenu: [''],
-                            harga: [0],
-                            gambar: [''],
-                            jumlah: [0],
-                            status_makanan: [false],
-                            noMeja: _noMejaController.text.toString(),
-                            status_transaksi: 'belum bayar',
-                            Uid: widget.passUID);
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => Halaman_user(
-                                  //transaksimenuList: dtTransaksi,
-                                  )),
-                        );
-                        DatabaseTransaksi.addData(data_transaksi: dtTransaksi);
-                      };
+                      const characters =
+                          'AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz1234567890';
+                      Random random = Random();
+                      String rndm = String.fromCharCodes(Iterable.generate(
+                          4,
+                          (_) => characters
+                              .codeUnitAt(random.nextInt(characters.length))));
+                      final dtTransaksi = transaksiMenu(
+                          namaMenu: [''],
+                          harga: [0],
+                          gambar: [''],
+                          jumlah: [0],
+                          status_makanan: [false],
+                          noMeja: _noMejaController.text.toString(),
+                          status_transaksi: 'belum bayar',
+                          Uid: widget.passUID);
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => Halaman_user(
+                            rndmID: rndm,
+                          ),
+                        ),
+                      );
+                      DatabaseTransaksi.addData(
+                          data_transaksi: dtTransaksi, docId: rndm);
                     },
                     child: Row(
                       children: [

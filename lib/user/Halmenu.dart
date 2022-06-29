@@ -10,14 +10,14 @@ import 'package:flutter/src/widgets/framework.dart';
 import '../menuService.dart';
 
 class Halmenu extends StatefulWidget {
-  const Halmenu({Key? key}) : super(key: key);
+  final String rndmID;
+  const Halmenu({Key? key, required this.rndmID}) : super(key: key);
 
   @override
   State<Halmenu> createState() => _HalmenuState();
 }
 
 class _HalmenuState extends State<Halmenu> {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -63,7 +63,11 @@ class _HalmenuState extends State<Halmenu> {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => DetailMenu(dtMenu: dt, docID: doc.id,),
+                                builder: (context) => DetailMenu(
+                                  rndmID: widget.rndmID,
+                                  dtMenu: dt,
+                                  docID: doc.id,
+                                ),
                               ),
                             );
                           },
@@ -120,7 +124,11 @@ class _HalmenuState extends State<Halmenu> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => DetailMenu(dtMenu: dt, docID: doc.id,),
+                              builder: (context) => DetailMenu(
+                                rndmID: widget.rndmID,
+                                dtMenu: dt,
+                                docID: doc.id,
+                              ),
                             ),
                           );
                         },
