@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+
 import 'package:ambwproyek/signInServices.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -54,15 +56,34 @@ class _halamanMenuState extends State<halamanMenu> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
+          backgroundColor: Color(0xFFF0BB62),
           title: Text(
-              'No Meja/ Kode Transaksi : ${widget.noMeja} / ${widget.rndmid}'),
+              'No Meja / Kode Transaksi : ${widget.noMeja} / ${widget.rndmid}', style: TextStyle(
+                color: Colors.black,
+                fontSize: 20,
+                fontWeight: FontWeight.bold)),
         ),
         body: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Text("Makanan",
-                style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold)),
+            SizedBox(
+              height: 5,
+            ),
+            Container(
+              padding: EdgeInsets.all(8),
+              color: Color.fromRGBO(244, 238, 169, 1),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Text("Makanan",
+                      style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold)),
+                      SizedBox(width: 10,),
+                  Icon(Icons.rice_bowl, size: 26, color: Colors.black),
+                ],
+              ),
+            ),
             Container(
               child: Expanded(
                 child: StreamBuilder<QuerySnapshot>(
@@ -125,10 +146,25 @@ class _halamanMenuState extends State<halamanMenu> {
               ),
             ),
             SizedBox(
-              height: 20,
+              height: 10,
             ),
-            Text("Minuman",
-                style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold)),
+            Container(
+              padding: EdgeInsets.all(8),
+              color: Color.fromRGBO(244, 238, 169, 1),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Text("Minuman",
+                      style:
+                          TextStyle(fontSize: 25, fontWeight: FontWeight.bold)),
+                  SizedBox(
+                    width: 10,
+                  ),
+                  Icon(Icons.coffee, size: 26, color: Colors.black),
+                ],
+              ),
+            ),
             Expanded(
               child: StreamBuilder<QuerySnapshot>(
                 stream: DatabaseMinuman.getData(),
