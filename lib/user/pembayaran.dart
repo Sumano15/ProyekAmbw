@@ -9,7 +9,9 @@ import 'halamanTerimaKasih.dart';
 
 class pembayaran extends StatefulWidget {
   final String total;
-  const pembayaran({Key? key, required this.total}) : super(key: key);
+  final String idPesanan;
+  const pembayaran({Key? key, required this.total, required this.idPesanan})
+      : super(key: key);
 
   @override
   State<pembayaran> createState() => _pembayaranState();
@@ -140,7 +142,10 @@ class _pembayaranState extends State<pembayaran> {
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => HalTerimaKasih()),
+                MaterialPageRoute(
+                    builder: (context) => HalTerimaKasih(
+                          idPesanan: widget.idPesanan,
+                        )),
               );
             },
             icon: const Icon(Icons.done),

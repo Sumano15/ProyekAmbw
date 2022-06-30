@@ -197,7 +197,9 @@ class _halamanTransaksiState extends State<halamanTransaksi> {
                         context,
                         MaterialPageRoute(
                             builder: (context) => pembayaran(
-                                total: _transaksi.getTotal().toString())),
+                                  total: _transaksi.getTotal().toString(),
+                                  idPesanan: widget.rndmId,
+                                )),
                       );
                     },
                     label: Text('Detail Pembayaran'),
