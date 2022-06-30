@@ -77,6 +77,9 @@ class _StatusChangerState extends State<StatusChanger> {
                 height: 20,
               ),
               ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                    primary: Color(0xffff8906),
+                  ),
                   onPressed: () {
                     dataTransaksi.updateData(
                         id: widget.idPesanan, NamaMenu: widget.Nama);
