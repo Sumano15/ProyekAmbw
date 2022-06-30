@@ -198,11 +198,4 @@ class _detailPesananState extends State<detailPesanan> {
       ),
     );
   }
-
-  statusChanger(
-      {required String Gambar,
-      required String Nama,
-      required String Harga,
-      required String idPesanan,
-      required String Status}) {}
 }

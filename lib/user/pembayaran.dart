@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
+import 'package:ambwproyek/menuService.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
@@ -140,6 +141,7 @@ class _pembayaranState extends State<pembayaran> {
           child: FloatingActionButton.extended(
             backgroundColor: Color(0xffff8906),
             onPressed: () {
+              DatabaseTransaksi.updateStatusTransaksi(id: widget.idPesanan);
               Navigator.push(
                 context,
                 MaterialPageRoute(

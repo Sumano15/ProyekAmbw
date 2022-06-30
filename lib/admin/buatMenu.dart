@@ -207,6 +207,7 @@
 
 import 'dart:io';
 
+import 'package:ambwproyek/admin/liatMenu.dart';
 import 'package:ambwproyek/dataclass.dart';
 import 'package:ambwproyek/menuService.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
@@ -400,6 +401,25 @@ class _BuatMenuState extends State<BuatMenu> {
                 ),
               ),
               onPressed: () {
+                showDialog(
+                  context: context,
+                  builder: (ctx) => AlertDialog(
+                    title: Text("Menu Sudah Ditambahkan"),
+                    content: Text("click ok to continue"),
+                    actions: <Widget>[
+                      ElevatedButton(
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => LiatMenu(),
+                              ));
+                        },
+                        child: Text("Ok"),
+                      ),
+                    ],
+                  ),
+                );
                 uploadFotoToStorage();
                 final dtBaru = menu(
                     nama: _namaMenuController.text.toString(),
