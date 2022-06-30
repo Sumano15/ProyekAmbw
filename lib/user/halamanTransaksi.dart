@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+// ignore_for_file: prefer_const_constructors
 
 import 'package:ambwproyek/menuService.dart';
 import 'package:ambwproyek/user/detailMenu1.dart';
@@ -175,6 +175,60 @@ class _halamanTransaksiState extends State<halamanTransaksi> {
               ),
             ),
           ),
+          SizedBox(
+            height: 5,
+          ),
+          Container(
+            padding: EdgeInsets.only(top: 8, bottom: 8),
+            child: Row(
+              children: [
+                SizedBox(
+                  width: 10,
+                ),
+                SizedBox(
+                  width: 300,
+                  height: 50,
+                  child: ElevatedButton.icon(
+                    style: ElevatedButton.styleFrom(
+                      primary: Color(0xffff8906),
+                    ),
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => pembayaran(
+                                total: _transaksi.getTotal().toString())),
+                      );
+                    },
+                    label: Text('Detail Pembayaran'),
+                    icon: Icon(
+                      Icons.payment,
+                      color: Colors.black,
+                      size: 24.0,
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  width: 30,
+                ),
+                FloatingActionButton(
+                  backgroundColor: Color(0xFFF0BB62),
+                  onPressed: () {
+                    // Navigator.pop(context);
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => halamanMenu(
+                            rndmid: widget.rndmId, noMeja: widget.noMeja),
+                      ),
+                    );
+                  },
+                  child:
+                      const Icon(Icons.menu_book_rounded, color: Colors.white),
+                ),
+              ],
+            ),
+          ),
         ],
       ),
       // floatingActionButton: FloatingActionButton(
@@ -191,53 +245,33 @@ class _halamanTransaksiState extends State<halamanTransaksi> {
       //   },
       //   child: const Icon(Icons.menu_book_rounded, color: Colors.white),
       // ),
-      bottomNavigationBar: Material(
-        color: const Color(0xffff8906),
-        child: InkWell(
-          onTap: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                  builder: (context) =>
-                      pembayaran(total: _transaksi.getTotal().toString())),
-            );
-          },
-          child: Row(
-            children: [
-              Container(
-                height: 70,
-                width: 100,
-                child: Center(
-                  child: Text(
-                    'Purchase',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 18,
-                    ),
-                  ),
-                ),
-              ),
-              SizedBox(
-                width: 100,
-              ),
-              FloatingActionButton(
-                backgroundColor: Color(0xFFF0BB62),
-                onPressed: () {
-                  // Navigator.pop(context);
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => halamanMenu(
-                          rndmid: widget.rndmId, noMeja: widget.noMeja),
-                    ),
-                  );
-                },
-                child: const Icon(Icons.menu_book_rounded, color: Colors.white),
-              ),
-            ],
-          ),
-        ),
-      ),
+
+      // bottomNavigationBar: Material(
+      //   color: const Color(0xffff8906),
+      //   child: InkWell(
+      //     onTap: () {
+      //       Navigator.push(
+      //         context,
+      //         MaterialPageRoute(
+      //             builder: (context) =>
+      //                 pembayaran(total: _transaksi.getTotal().toString())),
+      //       );
+      //     },
+      //     child: const SizedBox(
+      //       height: kToolbarHeight,
+      //       width: double.infinity,
+      //       child: Center(
+      //         child: Text(
+      //           'Purchase',
+      //           style: TextStyle(
+      //             fontWeight: FontWeight.bold,
+      //             fontSize: 18,
+      //           ),
+      //         ),
+      //       ),
+      //     ),
+      //   ),
+      // ),
     );
   }
 }

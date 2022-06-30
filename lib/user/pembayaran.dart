@@ -14,6 +14,7 @@ class _pembayaranState extends State<pembayaran> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      
       body: Container(
         //nnti kasi dropdown isinya detail pembayaran sama tombol kalo tombolnya di pencet arahkan ke page baru tulisannya thankyou for ordering
         child: Text('lakukan pembayaran sejumlah ${widget.total}'),

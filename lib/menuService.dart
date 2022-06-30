@@ -107,7 +107,7 @@ class DatabaseTransaksi {
       'id': docId,
       'NoMeja': noMeja,
       'UID': uid,
-      'Tanggal': now,
+      'Tanggal': now.toString(),
     });
   }
 
