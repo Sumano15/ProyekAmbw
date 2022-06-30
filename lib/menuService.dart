@@ -101,11 +101,13 @@ class DatabaseTransaksi {
       {required String docId,
       required String noMeja,
       required String uid}) async {
+    DateTime now = new DateTime.now();
     DocumentReference docRef = tblTransaksi.doc(docId);
     await docRef.set({
       'id': docId,
       'NoMeja': noMeja,
       'UID': uid,
+      'Tanggal': now,
     });
   }
 

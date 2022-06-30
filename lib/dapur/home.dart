@@ -1,3 +1,5 @@
+import 'package:ambwproyek/dapur/dapurservice.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -13,20 +15,47 @@ class _DapurHomeState extends State<DapurHome> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Home',
+      title: 'list Transaksi',
       home: Scaffold(
-        appBar: AppBar(
-          backgroundColor: Color(0xFFF0BB62),
-          title: Text('Home',
-              style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold)),
-        ),
-        body: Center(
-          child: Text('Dapur'),
-        ),
-      ),
+          appBar: AppBar(
+            backgroundColor: Color(0xFFF0BB62),
+            title: Text('Home',
+                style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold)),
+          ),
+          body: SingleChildScrollView(
+            child: Column(children: [
+              StreamBuilder<QuerySnapshot>(
+                stream: dataTransaksi.getData(),
+                builder: (context, snapshot) {
+                  if (snapshot.hasError) {
+                    return Text('Error: ${snapshot.error}');
+                  } else if (snapshot.hasData || snapshot.data != null) {
+                    return ListView.builder(
+                      physics: BouncingScrollPhysics(),
+                      itemCount: snapshot.data!.docs.length,
+                      itemBuilder: (context, index) {
+                        DocumentSnapshot doc = snapshot.data!.docs[index];
+                        return ListTile(
+                          title: Text(doc.id),
+                          subtitle: Text(doc['NoMeja']),
+                          onTap: () {},
+                          onLongPress: () {},
+                        );
+                      },
+                    );
+                  }
+                  return Center(
+                    child: CircularProgressIndicator(
+                      valueColor: AlwaysStoppedAnimation<Color>(Colors.black),
+                    ),
+                  );
+                },
+              ),
+            ]),
+          )),
     );
   }
 }
