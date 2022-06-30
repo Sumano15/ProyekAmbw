@@ -209,69 +209,36 @@ class _halamanTransaksiState extends State<halamanTransaksi> {
                   ),
                 ),
                 SizedBox(
-                  width: 30,
+                  width: 20,
                 ),
-                FloatingActionButton(
-                  backgroundColor: Color(0xFFF0BB62),
-                  onPressed: () {
-                    // Navigator.pop(context);
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => halamanMenu(
-                            rndmid: widget.rndmId, noMeja: widget.noMeja),
-                      ),
-                    );
-                  },
-                  child:
-                      const Icon(Icons.menu_book_rounded, color: Colors.white),
+                SizedBox(
+                  width: 55,
+                  height: 50,
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      primary: Color(0xFFF0BB62),
+                    ),
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => halamanMenu(
+                              rndmid: widget.rndmId, noMeja: widget.noMeja),
+                        ),
+                      );
+                    },
+                    child: Icon(
+                      Icons.menu_book_rounded,
+                      color: Colors.white,
+                      size: 24.0,
+                    ),
+                  ),
                 ),
               ],
             ),
           ),
         ],
       ),
-      // floatingActionButton: FloatingActionButton(
-      //   backgroundColor: Color(0xFFF0BB62),
-      //   onPressed: () {
-      //     // Navigator.pop(context);
-      //     Navigator.push(
-      //       context,
-      //       MaterialPageRoute(
-      //         builder: (context) =>
-      //             halamanMenu(rndmid: widget.rndmId, noMeja: widget.noMeja),
-      //       ),
-      //     );
-      //   },
-      //   child: const Icon(Icons.menu_book_rounded, color: Colors.white),
-      // ),
-
-      // bottomNavigationBar: Material(
-      //   color: const Color(0xffff8906),
-      //   child: InkWell(
-      //     onTap: () {
-      //       Navigator.push(
-      //         context,
-      //         MaterialPageRoute(
-      //             builder: (context) =>
-      //                 pembayaran(total: _transaksi.getTotal().toString())),
-      //       );
-      //     },
-      //     child: const SizedBox(
-      //       height: kToolbarHeight,
-      //       width: double.infinity,
-      //       child: Center(
-      //         child: Text(
-      //           'Purchase',
-      //           style: TextStyle(
-      //             fontWeight: FontWeight.bold,
-      //             fontSize: 18,
-      //           ),
-      //         ),
-      //       ),
-      //     ),
-      //   ),
-      // ),
     );
   }
 }
