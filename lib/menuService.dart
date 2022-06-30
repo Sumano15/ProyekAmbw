@@ -108,6 +108,7 @@ class DatabaseTransaksi {
       'NoMeja': noMeja,
       'UID': uid,
       'Tanggal': now.toString(),
+      'Status': 'Belum Bayar',
     });
   }
 
@@ -124,6 +125,7 @@ class DatabaseTransaksi {
       'Harga': Harga,
       'Jumlah': Jumlah,
       'Gambar': gambar,
+      'Status': 'DiProses',
     });
   }
 }
