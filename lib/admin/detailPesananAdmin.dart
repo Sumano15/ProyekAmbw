@@ -1,19 +1,16 @@
-import 'package:ambwproyek/dapur/statusChanger.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:ambwproyek/dapur/dapurservice.dart';
 
-import 'home.dart';
-
-class detailPesanan extends StatefulWidget {
+class detailPesananAdmin extends StatefulWidget {
   final String idPesanan;
   final String Uid;
   final String tanggal;
   final String noMeja;
   final String Status;
-  const detailPesanan(
+  const detailPesananAdmin(
       {Key? key,
       required this.idPesanan,
       required this.Uid,
@@ -23,10 +20,10 @@ class detailPesanan extends StatefulWidget {
       : super(key: key);
 
   @override
-  State<detailPesanan> createState() => _detailPesananState();
+  State<detailPesananAdmin> createState() => _detailPesananAdminState();
 }
 
-class _detailPesananState extends State<detailPesanan> {
+class _detailPesananAdminState extends State<detailPesananAdmin> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -61,6 +58,8 @@ class _detailPesananState extends State<detailPesanan> {
             SizedBox(
               height: 5,
             ),
+            Text('id Pembeli : ${widget.Uid}',
+                style: TextStyle(fontSize: 15, color: Colors.black)),
             Expanded(
               child: FutureBuilder<QuerySnapshot>(
                 future: dataTransaksi.getDataMenu(widget.idPesanan),
@@ -91,25 +90,6 @@ class _detailPesananState extends State<detailPesanan> {
                                     fit: BoxFit.cover,
                                   ),
                                 ),
-                                onTap: () {
-                                  print(
-                                      '${doc['Gambar'].toString()} + ${doc.id} + ${doc['Harga'].toString()} + ${widget.idPesanan} + ${doc['Status'].toString()}');
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => StatusChanger(
-                                        Gambar: doc['Gambar'].toString(),
-                                        Nama: doc.id,
-                                        Harga: doc['Harga'].toString(),
-                                        idPesanan: widget.idPesanan,
-                                        Status: doc['Status'].toString(),
-                                        Uid: widget.Uid,
-                                        tanggal: widget.tanggal,
-                                        noMeja: widget.noMeja,
-                                      ),
-                                    ),
-                                  );
-                                },
                               ),
                             ],
                           ),
@@ -126,30 +106,6 @@ class _detailPesananState extends State<detailPesanan> {
               ),
             )
           ],
-        ),
-      ),
-      bottomNavigationBar: Material(
-        color: const Color(0xFFF0BB62),
-        child: InkWell(
-          onTap: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => DapurHome()),
-            );
-          },
-          child: const SizedBox(
-            height: kToolbarHeight,
-            width: double.infinity,
-            child: Center(
-              child: Text(
-                'Back',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 18,
-                ),
-              ),
-            ),
-          ),
         ),
       ),
     );

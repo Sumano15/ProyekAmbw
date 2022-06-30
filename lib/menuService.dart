@@ -128,4 +128,16 @@ class DatabaseTransaksi {
       'Status': 'DiProses',
     });
   }
+
+  static Future<void> updateStatusTransaksi({required String id}) async {
+    DocumentReference docRef = tblTransaksi.doc(id);
+    await docRef
+        .update({
+          'Status': 'Sudah Dibayar',
+        })
+        .whenComplete(
+          () => print("Data berhasil diubah"),
+        )
+        .catchError((e) => print(e.toString()));
+  }
 }
