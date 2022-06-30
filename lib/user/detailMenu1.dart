@@ -8,12 +8,12 @@ import 'package:flutter/src/widgets/framework.dart';
 import '../dataclass.dart';
 import '../menuService.dart';
 
-class detailMenu extends StatefulWidget {
+class detailMenu1 extends StatefulWidget {
   final String rndmId;
   final menu dtmenu;
   final int jmlh;
   final String noMeja;
-  const detailMenu(
+  const detailMenu1(
       {Key? key,
       required this.rndmId,
       required this.dtmenu,
@@ -22,10 +22,10 @@ class detailMenu extends StatefulWidget {
       : super(key: key);
 
   @override
-  State<detailMenu> createState() => _detailMenuState();
+  State<detailMenu1> createState() => _detailMenu1State();
 }
 
-class _detailMenuState extends State<detailMenu> {
+class _detailMenu1State extends State<detailMenu1> {
   int _qty = 0;
 
   @override
@@ -145,7 +145,14 @@ class _detailMenuState extends State<detailMenu> {
                             Jumlah: _qty,
                             RandId: widget.rndmId,
                             gambar: widget.dtmenu.gambar);
-                        Navigator.pop(context);
+                        Navigator.pushAndRemoveUntil(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => halamanTransaksi(
+                                      rndmId: widget.rndmId,
+                                      noMeja: widget.noMeja,
+                                    )),
+                            (Route<dynamic> route) => false);
                       }
                     },
                     child: Text(

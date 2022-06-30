@@ -93,8 +93,8 @@ CollectionReference tblTransaksi =
     FirebaseFirestore.instance.collection('transaksiMenu');
 
 class DatabaseTransaksi {
-  static Stream<QuerySnapshot> getDataMenu(String id) {
-    return tblTransaksi.doc(id).collection('menu').snapshots();
+  static Future<QuerySnapshot<Map<String, dynamic>>> getDataMenu(String id) {
+    return tblTransaksi.doc(id).collection('menu').get();
   }
 
   static Future<void> addDocument(

@@ -65,8 +65,9 @@ class menu {
 class detData {
   final int? Jumlah;
   final int? Harga;
+  final String? Gambar;
 
-  detData({this.Jumlah, this.Harga});
+  detData({this.Jumlah, this.Harga, this.Gambar});
 
   factory detData.fromFirestore(
     DocumentSnapshot<Map<String, dynamic>> sshot,
@@ -76,11 +77,13 @@ class detData {
     return detData(
       Jumlah: data?['Jumlah'] as int,
       Harga: data?['Harga'] as int,
+      Gambar: data?['Gambar'] as String,
     );
   }
 
   Map<String, dynamic> ToFirestore() => {
         'Jumlah': Jumlah,
         'Harga': Harga,
+        'Gambar': Gambar,
       };
 }
