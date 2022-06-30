@@ -18,8 +18,7 @@ class _HalTerimaKasihState extends State<HalTerimaKasih> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SingleChildScrollView(
-        child: Column(
+      body: Column(
           children: [
             SizedBox(
               height: 100,
@@ -76,7 +75,6 @@ class _HalTerimaKasihState extends State<HalTerimaKasih> {
               ),
             )
           ],
-        ),
       ),
     );
   }
