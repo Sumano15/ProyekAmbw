@@ -31,7 +31,7 @@ class _detailPesananAdminState extends State<detailPesananAdmin> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Color(0xFFF0BB62),
-        title: Text('Detail Pesanan ${widget.idPesanan}',
+        title: Text('Detail Pesanan  < ${widget.idPesanan} >',
             style: TextStyle(
                 color: Colors.black,
                 fontSize: 20,

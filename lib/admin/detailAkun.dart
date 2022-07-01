@@ -26,6 +26,10 @@ class detailAkunPage extends StatefulWidget {
 }
 
 class _detailAkunPageState extends State<detailAkunPage> {
+  List<String> listAkun = [];
+
+  final TextEditingController eNama = new TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
