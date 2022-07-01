@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_literals_to_create_immutables
+
 import 'package:ambwproyek/admin/buatMenu.dart';
 import 'package:ambwproyek/admin/editData.dart';
 import 'package:ambwproyek/dataclass.dart';
@@ -6,6 +8,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
+// ignore_for_file: prefer_const_constructors
 
 class LiatMenu extends StatefulWidget {
   const LiatMenu({Key? key}) : super(key: key);
@@ -23,14 +26,14 @@ class _LiatMenuState extends State<LiatMenu> with TickerProviderStateMixin {
         child: Column(
           children: [
             SizedBox(
-              height: 30,
+              height: 40,
             ),
             Text(
               'MENU',
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
             SizedBox(
-              height: 30,
+              height: 20,
             ),
             Card(
               shape: RoundedRectangleBorder(
@@ -64,9 +67,6 @@ class _LiatMenuState extends State<LiatMenu> with TickerProviderStateMixin {
                   ],
                 ),
               ),
-            ),
-            SizedBox(
-              height: 20,
             ),
             Expanded(
               child: TabBarView(

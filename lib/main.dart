@@ -1,3 +1,5 @@
+import 'package:ambwproyek/admin/detailAkun.dart';
+import 'package:ambwproyek/admin/home.dart';
 import 'package:ambwproyek/firebase_options.dart';
 import 'package:ambwproyek/login.dart';
 import 'package:firebase_core/firebase_core.dart';

@@ -1,4 +1,4 @@
-import 'package:ambwproyek/admin/QrPage.dart';
+import 'package:ambwproyek/admin/ManageAkun.dart';
 import 'package:ambwproyek/admin/buatMenu.dart';
 import 'package:ambwproyek/admin/cekTransaksi.dart';
 import 'package:ambwproyek/admin/liatMenu.dart';
@@ -19,7 +19,7 @@ class _AdminState extends State<Admin> {
       TextStyle(fontSize: 30, fontWeight: FontWeight.w600);
   static const List<Widget> _Page = [
     CekTransaksi(),
-    QrCodePage(),
+    ManageAkunPage(),
     BuatMenu(),
     LiatMenu(),
   ];
@@ -58,7 +58,7 @@ class _AdminState extends State<Admin> {
               color: Colors.black,
               tabs: [
                 GButton(icon: Icons.note, text: 'Cek Transaksi'),
-                GButton(icon: Icons.qr_code, text: 'Buat Qr Code'),
+                GButton(icon: Icons.person, text: 'List Akun'),
                 GButton(icon: Icons.edit, text: 'Buat Menu'),
                 GButton(icon: Icons.menu_book, text: 'Lihat Menu'),
               ],

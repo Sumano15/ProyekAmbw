@@ -207,6 +207,7 @@
 
 import 'dart:io';
 
+// ignore_for_file: prefer_const_constructors
 import 'package:ambwproyek/admin/liatMenu.dart';
 import 'package:ambwproyek/dataclass.dart';
 import 'package:ambwproyek/menuService.dart';
@@ -292,7 +293,7 @@ class _BuatMenuState extends State<BuatMenu> {
         child: Column(
           children: [
             SizedBox(
-              height: 20,
+              height: 50,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
