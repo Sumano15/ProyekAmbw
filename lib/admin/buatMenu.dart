@@ -72,7 +72,7 @@ class _BuatMenuState extends State<BuatMenu> {
     Reference ref = FirebaseStorage.instance.ref().child(path);
     await ref.putFile(file);
     String imageUrl = await ref.getDownloadURL();
-    print(imageUrl);
+    print('yayayaya ${imageUrl}');
     setState(() {
       URL = imageUrl;
     });

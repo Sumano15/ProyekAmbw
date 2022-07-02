@@ -8,6 +8,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
+
+import 'menuBelumSelesai.dart';
 // ignore_for_file: prefer_const_constructors
 
 class LiatMenu extends StatefulWidget {
@@ -233,7 +235,14 @@ class _LiatMenuState extends State<LiatMenu> with TickerProviderStateMixin {
                   ),
                 ],
               ),
-            )
+            ),
+          ElevatedButton(onPressed: () {
+            Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => MenuBelumSelesaiPage()),
+                  );
+          }, child: Text("Menu Belum Selesai")),
           ],
         ),
       ),

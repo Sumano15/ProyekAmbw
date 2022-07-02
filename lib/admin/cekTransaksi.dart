@@ -7,6 +7,8 @@ import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:ambwproyek/dapur/dapurservice.dart';
 
+import 'menuBelumSelesai.dart';
+
 class CekTransaksi extends StatelessWidget {
   const CekTransaksi({Key? key}) : super(key: key);
 
@@ -66,7 +68,16 @@ class CekTransaksi extends StatelessWidget {
                     );
                   },
                 ),
-              )
+              ),
+              // ElevatedButton(
+              //     onPressed: () {
+              //       Navigator.push(
+              //         context,
+              //         MaterialPageRoute(
+              //             builder: (context) => MenuBelumSelesaiPage()),
+              //       );
+              //     },
+              //     child: Text("Pesanan Belum Selesai")),
             ],
           ),
         ),

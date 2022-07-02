@@ -2,6 +2,7 @@
 
 import 'package:ambwproyek/signInServices.dart';
 import 'package:ambwproyek/user/halamanTransaksi.dart';
+import 'package:ambwproyek/user/history.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
@@ -12,9 +13,11 @@ import '../menuService.dart';
 import 'detailMenu.dart';
 
 class halamanMenu extends StatefulWidget {
+  final String uId;
   final String rndmid;
   final String noMeja;
-  const halamanMenu({Key? key, required this.rndmid, required this.noMeja})
+  const halamanMenu(
+      {Key? key, required this.rndmid, required this.noMeja, required this.uId})
       : super(key: key);
 
   @override
@@ -247,6 +250,41 @@ class _halamanMenuState extends State<halamanMenu> {
               },
             ),
           ),
+          Container(
+            padding: EdgeInsets.only(top: 8, bottom: 8),
+            child: Row(
+              children: [
+                SizedBox(
+                  width: 10,
+                ),
+                SizedBox(
+                  width: 300,
+                  height: 50,
+                  child: ElevatedButton.icon(
+                    style: ElevatedButton.styleFrom(
+                      primary: Color(0xffff8906),
+                    ),
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => history(
+                            uId: widget.uId,
+                          ),
+                        ),
+                      );
+                    },
+                    label: Text('History Transaksi'),
+                    icon: Icon(
+                      Icons.payment,
+                      color: Colors.black,
+                      size: 24.0,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
         ],
       ),
       floatingActionButton: FloatingActionButton(
@@ -258,6 +296,7 @@ class _halamanMenuState extends State<halamanMenu> {
               builder: (context) => halamanTransaksi(
                 rndmId: widget.rndmid,
                 noMeja: widget.noMeja,
+                uid: widget.uId,
               ),
             ),
           );

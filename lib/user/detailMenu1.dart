@@ -9,6 +9,7 @@ import '../dataclass.dart';
 import '../menuService.dart';
 
 class detailMenu1 extends StatefulWidget {
+  final String uid;
   final String rndmId;
   final menu dtmenu;
   final int jmlh;
@@ -18,7 +19,8 @@ class detailMenu1 extends StatefulWidget {
       required this.rndmId,
       required this.dtmenu,
       required this.jmlh,
-      required this.noMeja})
+      required this.noMeja,
+      required this.uid})
       : super(key: key);
 
   @override
@@ -151,6 +153,7 @@ class _detailMenu1State extends State<detailMenu1> {
                                 builder: (context) => halamanTransaksi(
                                       rndmId: widget.rndmId,
                                       noMeja: widget.noMeja,
+                                      uid: widget.uid,
                                     )),
                             (Route<dynamic> route) => false);
                       }

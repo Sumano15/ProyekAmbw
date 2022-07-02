@@ -95,6 +95,7 @@ class _inputNoMejaState extends State<inputNoMeja> {
                           builder: (context) => halamanMenu(
                             rndmid: rndm,
                             noMeja: _noMejaController.text,
+                            uId: widget.uid,
                           ),
                         ),
                       );
@@ -106,7 +107,7 @@ class _inputNoMejaState extends State<inputNoMeja> {
                   ),
                 ],
               ),
-            ),            
+            ),
           ],
         ),
       ),

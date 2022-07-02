@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 
+import 'menuHarian.dart';
+
 class DapurHome extends StatefulWidget {
   const DapurHome({Key? key}) : super(key: key);
 
@@ -72,6 +74,18 @@ class _DapurHomeState extends State<DapurHome> {
               )
             ],
           ),
+        ),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => menuHarian(),
+              ),
+            );
+          },
+          child: Icon(Icons.history),
+          backgroundColor: Color(0xFFF0BB62),
         ),
       ),
     );

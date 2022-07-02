@@ -97,6 +97,10 @@ class DatabaseTransaksi {
     return tblTransaksi.doc(id).collection('menu').get();
   }
 
+  static Future<QuerySnapshot<Object?>> getDataByUid(String uid) async {
+    return tblTransaksi.where('UID', isEqualTo: uid).get();
+  }
+
   static Future<void> addDocument(
       {required String docId,
       required String noMeja,

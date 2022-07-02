@@ -14,6 +14,7 @@ class StatusChanger extends StatefulWidget {
   final String Uid;
   final String tanggal;
   final String noMeja;
+  final int jumlahPesanan;
   const StatusChanger(
       {Key? key,
       required this.Gambar,
@@ -23,7 +24,7 @@ class StatusChanger extends StatefulWidget {
       required this.idPesanan,
       required this.Uid,
       required this.tanggal,
-      required this.noMeja})
+      required this.noMeja, required this.jumlahPesanan})
       : super(key: key);
 
   @override
@@ -81,6 +82,7 @@ class _StatusChangerState extends State<StatusChanger> {
                     primary: Color(0xffff8906),
                   ),
                   onPressed: () {
+                    dataTransaksi.addDocument(NamaMenu: widget.Nama, jumlah: widget.jumlahPesanan);
                     dataTransaksi.updateData(
                         id: widget.idPesanan, NamaMenu: widget.Nama);
                     Navigator.pushAndRemoveUntil(

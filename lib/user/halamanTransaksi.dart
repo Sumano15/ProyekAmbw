@@ -26,9 +26,11 @@ class Transaksi {
 }
 
 class halamanTransaksi extends StatefulWidget {
+  final String uid;
   final String rndmId;
   final String noMeja;
-  const halamanTransaksi({Key? key, required this.rndmId, required this.noMeja})
+  const halamanTransaksi(
+      {Key? key, required this.rndmId, required this.noMeja, required this.uid})
       : super(key: key);
 
   @override
@@ -146,6 +148,7 @@ class _halamanTransaksiState extends State<halamanTransaksi> {
                                         dtmenu: dtMenu,
                                         jmlh: int.parse(qty.toString()),
                                         noMeja: widget.noMeja,
+                                        uid: widget.uid,
                                       ),
                                     ),
                                   );
@@ -225,7 +228,10 @@ class _halamanTransaksiState extends State<halamanTransaksi> {
                         context,
                         MaterialPageRoute(
                           builder: (context) => halamanMenu(
-                              rndmid: widget.rndmId, noMeja: widget.noMeja),
+                            rndmid: widget.rndmId,
+                            noMeja: widget.noMeja,
+                            uId: widget.uid,
+                          ),
                         ),
                       );
                     },

@@ -1,5 +1,3 @@
-// ignore_for_file: unnecessary_string_interpolations, prefer_const_constructors
-
 import 'package:ambwproyek/dapur/statusChanger.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -9,13 +7,13 @@ import 'package:ambwproyek/dapur/dapurservice.dart';
 
 import 'home.dart';
 
-class detailPesanan extends StatefulWidget {
+class totalMenu extends StatefulWidget {
   final String idPesanan;
   final String Uid;
   final String tanggal;
   final String noMeja;
   final String Status;
-  const detailPesanan(
+  const totalMenu(
       {Key? key,
       required this.idPesanan,
       required this.Uid,
@@ -25,16 +23,16 @@ class detailPesanan extends StatefulWidget {
       : super(key: key);
 
   @override
-  State<detailPesanan> createState() => _detailPesananState();
+  State<totalMenu> createState() => _totalMenuState();
 }
 
-class _detailPesananState extends State<detailPesanan> {
+class _totalMenuState extends State<totalMenu> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Color(0xFFF0BB62),
-        title: Text('Detail Pesanan  <${widget.idPesanan}>',
+        title: Text('Total Pesanan Hari Ini',
             style: TextStyle(
                 color: Colors.black,
                 fontSize: 20,
@@ -53,7 +51,7 @@ class _detailPesananState extends State<detailPesanan> {
                   SizedBox(
                     width: 15,
                   ),
-                  Text('Tanggal Pesanan',
+                  Text('Tanggal :',
                       style: TextStyle(fontSize: 15, color: Colors.black, fontWeight: FontWeight.bold)),
                   Text(' : ${widget.tanggal}',
                       style: TextStyle(fontSize: 15, color: Colors.black)),
@@ -61,48 +59,7 @@ class _detailPesananState extends State<detailPesanan> {
               ),
             ],
           ),
-          SizedBox(
-            height: 5,
-          ),
-          Row(
-            children: [
-              SizedBox(
-                width: 15,
-              ),
-              Text('Kode Pesanan',
-                  style: TextStyle(fontSize: 15, color: Colors.black, fontWeight: FontWeight.bold)),
-              Text(' : ${widget.idPesanan}',
-                  style: TextStyle(fontSize: 15, color: Colors.black)),
-            ],
-          ),
-          SizedBox(
-            height: 5,
-          ),
-          Row(
-            children: [
-              SizedBox(
-                width: 15,
-              ),
-              Text('No.Meja',
-                  style: TextStyle(fontSize: 15, color: Colors.black, fontWeight: FontWeight.bold)),
-              Text(' : ${widget.noMeja}',
-                  style: TextStyle(fontSize: 15, color: Colors.black)),
-            ],
-          ),
-          SizedBox(
-            height: 5,
-          ),
-          Row(
-            children: [
-              SizedBox(
-                width: 15,
-              ),
-              Text('Status',
-                  style: TextStyle(fontSize: 15, color: Colors.black, fontWeight: FontWeight.bold)),
-              Text(' : ${widget.Status}',
-                  style: TextStyle(fontSize: 15, color: Colors.black)),
-            ],
-          ),
+          
           SizedBox(
             height: 20,
           ),
@@ -136,26 +93,6 @@ class _detailPesananState extends State<detailPesanan> {
                                   fit: BoxFit.cover,
                                 ),
                               ),
-                              onTap: () {
-                                print(
-                                    '${doc['Gambar'].toString()} + ${doc.id} + ${doc['Harga'].toString()} + ${widget.idPesanan} + ${doc['Status'].toString()}');
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => StatusChanger(
-                                      Gambar: doc['Gambar'].toString(),
-                                      Nama: doc.id,
-                                      Harga: doc['Harga'].toString(),
-                                      idPesanan: widget.idPesanan,
-                                      Status: doc['Status'].toString(),
-                                      Uid: widget.Uid,
-                                      tanggal: widget.tanggal,
-                                      noMeja: widget.noMeja,
-                                      jumlahPesanan: doc['Jumlah'],
-                                    ),
-                                  ),
-                                );
-                              },
                             ),
                           ],
                         ),
