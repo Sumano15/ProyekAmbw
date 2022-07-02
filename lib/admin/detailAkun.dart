@@ -137,51 +137,6 @@ class _detailAkunPageState extends State<detailAkunPage> {
                   style: TextStyle(fontSize: 15, color: Colors.black)),
             ],
           ),
-          // Expanded(
-          //   child: FutureBuilder<QuerySnapshot>(
-          //     future: manageDataAkun.getDataAkun(widget.idAkun),
-          //     builder: (context, snapshot) {
-          //       if (snapshot.hasError) {
-          //         return Text('Error: ${snapshot.error}');
-          //       } else if (snapshot.hasData || snapshot.data != null) {
-          //         return ListView.builder(
-          //           itemCount: snapshot.data!.docs.length,
-          //           itemBuilder: (context, index) {
-          //             DocumentSnapshot doc = snapshot.data!.docs[index];
-          //             return Container(
-          //               child: Column(
-          //                 children: [
-          //                   ListTile(
-          //                     title: Text(doc.id),
-          //                     subtitle: Text(doc['Nama'].toString()),
-          //                     trailing: Text(doc['No telp'].toString()),
-          //                     leading: ConstrainedBox(
-          //                       constraints: BoxConstraints(
-          //                         minWidth: 100,
-          //                         minHeight: 100,
-          //                         maxWidth: 200,
-          //                         maxHeight: 200,
-          //                       ),
-          //                       child: Image.network(
-          //                         doc['Gambar'],
-          //                         fit: BoxFit.cover,
-          //                       ),
-          //                     ),
-          //                   ),
-          //                 ],
-          //               ),
-          //             );
-          //           },
-          //         );
-          //       }
-          //       return Center(
-          //         child: CircularProgressIndicator(
-          //           valueColor: AlwaysStoppedAnimation<Color>(Colors.black),
-          //         ),
-          //       );
-          //     },
-          //   ),
-          // )
         ],
       ),
     );

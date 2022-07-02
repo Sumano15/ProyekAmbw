@@ -49,14 +49,15 @@ class _ManageAkunPageState extends State<ManageAkunPage> {
                           return ListTile(
                             title: Text(doc['Nama'].toString()),
                             subtitle: Text(doc.id),
-                            leading: Text(doc['role'].toString(),style: TextStyle(fontWeight: FontWeight.bold)),
+                            leading: Text(doc['role'].toString(),
+                                style: TextStyle(fontWeight: FontWeight.bold)),
                             onTap: () {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
                                   builder: (context) => detailAkunPage(
                                     nama: doc['Nama'].toString(),
-                                    noTelp: doc['No Telp'].toString(),
+                                    noTelp: doc['No telp'].toString(),
                                     email: doc['email'].toString(),
                                     password: doc['password'].toString(),
                                     role: doc['role'].toString(),
