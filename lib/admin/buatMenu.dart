@@ -69,11 +69,13 @@ class _BuatMenuState extends State<BuatMenu> {
     // final file = File(pickedfile!.path.toString());
     final file = File(pickedfile!.path!.toString());
 
-    final ref = FirebaseStorage.instance.ref().child(path);
-    ref.putFile(file);
+    Reference ref = FirebaseStorage.instance.ref().child(path);
+    await ref.putFile(file);
     String imageUrl = await ref.getDownloadURL();
     print(imageUrl);
-    URL = imageUrl;
+    setState(() {
+      URL = imageUrl;
+    });
   }
 
   final items = ['Makanan', 'Minuman'];
@@ -203,11 +205,7 @@ class _BuatMenuState extends State<BuatMenu> {
                     actions: <Widget>[
                       ElevatedButton(
                         onPressed: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => LiatMenu(),
-                              ));
+                          Navigator.pop(context);
                         },
                         child: Text("Ok"),
                       ),
