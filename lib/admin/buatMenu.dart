@@ -64,18 +64,26 @@ class _BuatMenuState extends State<BuatMenu> {
 
   String URL = "";
 
-  Future uploadFotoToStorage() async {
+  Future uploadFotoToStorage(String _nama, String _harga, String _value) async {
     final path = "menu/$fileName";
-    // final file = File(pickedfile!.path.toString());
     final file = File(pickedfile!.path!.toString());
 
     Reference ref = FirebaseStorage.instance.ref().child(path);
     await ref.putFile(file);
-    String imageUrl = await ref.getDownloadURL();
-    print('yayayaya ${imageUrl}');
-    setState(() {
-      URL = imageUrl;
+    await ref.getDownloadURL().then((value) {
+      URL = value;
+       final dtBaru = menu(nama: _nama, harga: _harga, gambar: URL);
+      print('yang bawah ${dtBaru.gambar}');
+      print('yang bawah nama ${dtBaru.nama}');
+      print('yang bawah harga ${dtBaru.harga}');
+
+      if (_value == "Makanan") {
+        DatabaseMakanan.addData(data_makanan: dtBaru);
+      } else if (_value == "Minuman") {
+        DatabaseMinuman.addData(data_minuman: dtBaru);
+      }
     });
+
   }
 
   final items = ['Makanan', 'Minuman'];
@@ -212,16 +220,12 @@ class _BuatMenuState extends State<BuatMenu> {
                     ],
                   ),
                 );
-                uploadFotoToStorage();
-                final dtBaru = menu(
-                    nama: _namaMenuController.text.toString(),
-                    harga: _hargaController.text.toString(),
-                    gambar: URL);
                 if (value == "Makanan") {
-                  DatabaseMakanan.addData(data_makanan: dtBaru);
+                  uploadFotoToStorage(_namaMenuController.text, _hargaController.text, value!);
                 } else if (value == "Minuman") {
-                  DatabaseMinuman.addData(data_minuman: dtBaru);
+                  uploadFotoToStorage(_namaMenuController.text, _hargaController.text, value!);
                 }
+                
               },
               child: Text(
                 'Add Menu',

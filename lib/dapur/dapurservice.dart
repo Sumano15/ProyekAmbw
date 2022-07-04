@@ -19,11 +19,17 @@ class dataTransaksi {
     return transaksi.doc(id).collection('menu').get();
   }
 
-  static Future<QuerySnapshot<Map<String, dynamic>>> getDataMenuBelumSelesai(
-      String id) {
-    return
-    transaksi.doc(id).collection('menu').where('Status', isEqualTo: 'DiProses').get();
-  }
+  // static Future<QuerySnapshot<Map<String, dynamic>>> getDataMenuBelumSelesai(
+  //     String id) {
+    
+  //   transaksi.doc(id).collection('menu').doc().collection('Status').where('Status', isEqualTo: 'DiProses').get();
+  // }
+
+  // static Future<QuerySnapshot<Map<String, dynamic>>> getDataMenuBelumSelesai(
+  //     {required String id}) {
+  //   CollectionReference<Map<String, dynamic>> docRef =
+  //       transaksi.doc(id).collection('menu').doc().collection('Status')
+  // }
 
   static Future<void> updateData(
       {required String id, required String NamaMenu}) {
