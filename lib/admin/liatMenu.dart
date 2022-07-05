@@ -236,13 +236,17 @@ class _LiatMenuState extends State<LiatMenu> with TickerProviderStateMixin {
                 ],
               ),
             ),
-          ElevatedButton(onPressed: () {
+          ElevatedButton(
+            style: ElevatedButton.styleFrom(
+              primary: Color(0xFFF0BB62),
+            ),
+            onPressed: () {
             Navigator.push(
                     context,
                     MaterialPageRoute(
                         builder: (context) => MenuBelumSelesaiPage()),
                   );
-          }, child: Text("Menu Belum Selesai")),
+          }, child: Text("Menu Belum Selesai per Transaksi", style: TextStyle(color: Colors.black),)),
           ],
         ),
       ),

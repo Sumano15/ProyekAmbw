@@ -19,11 +19,11 @@ class dataTransaksi {
     return transaksi.doc(id).collection('menu').get();
   }
 
-  // static Future<QuerySnapshot<Map<String, dynamic>>> getDataMenuBelumSelesai(
-  //     String id) {
+  static Stream<QuerySnapshot<Map<String, dynamic>>> getDataMenuBelumSelesai(
+      String id) {
     
-  //   transaksi.doc(id).collection('menu').doc().collection('Status').where('Status', isEqualTo: 'DiProses').get();
-  // }
+    return transaksi.doc(id).collection('menu').snapshots();
+  }
 
   // static Future<QuerySnapshot<Map<String, dynamic>>> getDataMenuBelumSelesai(
   //     {required String id}) {

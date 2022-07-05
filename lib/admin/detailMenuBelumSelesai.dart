@@ -43,8 +43,8 @@ class _detailMenuBelumSelesaiPageState extends State<detailMenuBelumSelesaiPage>
           child: Column(
             children: [
               Expanded(
-                child: FutureBuilder<QuerySnapshot>(
-                  future: dataTransaksi.getDataMenu(widget.idPesanan),
+                child: StreamBuilder<QuerySnapshot>(
+                  stream: dataTransaksi.getDataMenuBelumSelesai(widget.idPesanan),
                   builder: (context, snapshot) {
                     if (snapshot.hasError) {
                       return Text('Error: ${snapshot.error}');
@@ -53,7 +53,8 @@ class _detailMenuBelumSelesaiPageState extends State<detailMenuBelumSelesaiPage>
                           itemCount: snapshot.data!.docs.length,
                           itemBuilder: (context, index) {
                             DocumentSnapshot doc = snapshot.data!.docs[index];
-                            return Container(
+                            if(doc['Status'] == 'DiProses') {
+                              return Container(
                               child: Column(
                                 children: [
                                   ListTile(
@@ -76,6 +77,11 @@ class _detailMenuBelumSelesaiPageState extends State<detailMenuBelumSelesaiPage>
                                 ],
                               ),
                             );
+                            } else {
+                              return SizedBox(
+                                
+                              );
+                            }
                           },
                         );
                     }
