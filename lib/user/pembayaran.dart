@@ -25,7 +25,7 @@ class _pembayaranState extends State<pembayaran> {
   final List<String> genderItems = [
     'Ovo',
     'Credit Card',
-    'Hehe',
+    'Debit Card',
   ];
 
   String? selectedValue;
